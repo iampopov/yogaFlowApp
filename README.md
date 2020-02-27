@@ -1,1 +1,1 @@
-# yogaFlowApp
+# yogaApp
