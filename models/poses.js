@@ -1,4 +1,4 @@
-module.exports = function (sequelize, DataTypes) {
+module.exports = function(sequelize, DataTypes) {
     const Poses = sequelize.define("Poses", {
         pose_name: {
             type: DataTypes.STRING,
@@ -28,5 +28,5 @@ module.exports = function (sequelize, DataTypes) {
         }
         
     })
-    return Poses
+    return Poses;
 }
