@@ -22,7 +22,7 @@ module.exports = {
 
   },
   update: function(req, res, next) {
-    db.Poses.update({
+    db.Poses.update(req.body, {
       where: {
         id: req.params.id
       }

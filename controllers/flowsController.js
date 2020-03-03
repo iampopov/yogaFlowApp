@@ -2,35 +2,41 @@ const db = require("../models");
 
 module.exports = {
   findAll: function(req, res) {
-    db.Flows
-      .find(req.query)
-      .sort({ date: -1 })
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+    db.Flows.findAll().then(function(p) {
+      res.json(p)
+    })
   },
   findById: function(req, res) {
-    db.Flows
-      .findById(req.params.id)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+    db.Flows.findOne({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(p) {
+      res.json(p)
+    })
   },
   create: function(req, res) {
-    db.Flows
-      .create(req.body)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+    db.Flows.create(req.body).then(function(p) {
+      res.json(p)     
+    })
+
   },
-  update: function(req, res) {
-    db.Flows
-      .findOneAndUpdate({ _id: req.params.id }, req.body)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+  update: function(req, res, next) {
+    db.Flows.update(req.body, {
+      where: {
+        id: req.params.id
+      }
+    }).then(function(p) {
+      res.json(p)
+    }).catch(next)
   },
   remove: function(req, res) {
-    db.Flows
-      .findById({ _id: req.params.id })
-      .then(dbModel => dbModel.remove())
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+    db.Flows.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(p) {
+      res.json(p)
+    })
   }
 };

@@ -1,4 +1,4 @@
-module.exports = function (sequelize, DataTypes) {
+module.exports = function(sequelize, DataTypes) {
     const Poses = sequelize.define("Poses", {
         pose_name: {
             type: DataTypes.STRING,
@@ -27,7 +27,7 @@ module.exports = function (sequelize, DataTypes) {
             }
         }
     })
-        Poses.associate = (models) => {
+    Poses.associate = (models) => {
             Poses.belongsToMany(models.Flows, {
                 through: 'FlowsPoses',
                 foreignKey: 'id'
