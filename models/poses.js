@@ -27,11 +27,9 @@ module.exports = function(sequelize, DataTypes) {
             }
         }
     })
-    Poses.associate = (models) => {
-            Poses.belongsToMany(models.Flows, {
-                through: 'FlowsPoses',
-                foreignKey: 'id'
-            })
-        }
-    return Poses
+
+    Poses.associate = (models)=>{
+        models.Poses.belongsTo(models.Teachers)
+    }
+    return Poses;
 }

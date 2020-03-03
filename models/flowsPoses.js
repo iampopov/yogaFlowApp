@@ -1,16 +1,21 @@
-const models = require("./index");
-
 module.exports = function (sequelize, DataTypes) {
     const FlowsPoses = sequelize.define("FlowsPoses", {
-        flowsId: {
-            type: DataTypes.UUID,
+        flowPosition: {
+            type: DataTypes.INTEGER,
             allowNull: false
-        },
-        poseID: {
-            type: DataTypes.UUID,
-            allowNull: false
-        }        
-    }, {});
+        }     
+    });
+
+    FlowsPoses.associate = function(models) {
+        models.Poses.belongsToMany(models.Flows, {
+            through:"FlowsPoses"
+        })
+        models.Flows.belongsToMany(models.Poses, {
+            through:"FlowsPoses"
+        })
+    }
+        
+    
     return FlowsPoses
 }
 
