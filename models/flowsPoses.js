@@ -9,14 +9,14 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false
         }        
     }, {});
-    FlowsPoses.associate = function(models) {
-        Poses.belongsToMany(models.Flows, {
-            through: 'FlowsPoses',
-            foreignKey: 'posesId',
-            otherKey: 'flowsId'
-        })
+    // FlowsPoses.associate = function(models) {
+    //     Poses.belongsToMany(models.Flows, {
+    //         through: 'FlowsPoses',
+    //         foreignKey: 'posesId',
+    //         otherKey: 'flowsId'
+    //     })
         
-    }
+    // }
     return FlowsPoses
 }
 

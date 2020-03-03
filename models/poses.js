@@ -26,7 +26,12 @@ module.exports = function (sequelize, DataTypes) {
                 len: [1]
             }
         }
-        
     })
+        Poses.associate = (models) => {
+            Poses.belongsToMany(models.Flows, {
+                through: 'FlowsPoses',
+                foreignKey: 'id'
+            })
+        }
     return Poses
 }

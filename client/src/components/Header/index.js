@@ -1,11 +1,11 @@
 import React from "react";
-import "./style.css";
+import { FooterWrapper } from "../../styles"
 
 function Header() {
     return (
-   <div class="header">
+   <FooterWrapper class="header">
        <h1>Yogi</h1>
-   </div>
+   </FooterWrapper>
 
     )
 }
