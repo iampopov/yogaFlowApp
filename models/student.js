@@ -61,6 +61,7 @@ module.exports = function (sequelize, DataTypes) {
 
     Students.associate = ((models) => {
         models.Students.belongsToMany(models.Flows, { through: "studentFlow", foreignKey: 'student_id', targetKey: 'id'});
+        models.Students.belongsToMany(models.Teachers, { through: "TeacherStudent", foreignKey: "student_id", targetKey: 'id'});
     });
     return Students
 }

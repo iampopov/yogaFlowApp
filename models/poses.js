@@ -28,5 +28,9 @@ module.exports = function(sequelize, DataTypes) {
         }
         
     })
+
+    Poses.associate = (models)=>{
+        models.Poses.belongsTo(models.Teachers)
+    }
     return Poses;
 }
