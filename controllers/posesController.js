@@ -2,12 +2,12 @@ const db = require("../models");
 
 module.exports = {
   findAll: function(req, res) {
-    db.Flows.findAll().then(function(p) {
+    db.Poses.findAll().then(function(p) {
       res.json(p)
     })
   },
   findById: function(req, res) {
-    db.Flows.findOne({
+    db.Poses.findOne({
       where: {
         id: req.params.id
       }
@@ -16,13 +16,13 @@ module.exports = {
     })
   },
   create: function(req, res) {
-    db.Flows.create(req.body).then(function(p) {
+    db.Poses.create(req.body).then(function(p) {
       res.json(p)     
     })
 
   },
   update: function(req, res, next) {
-    db.Flows.update(req.body, {
+    db.Poses.update(req.body, {
       where: {
         id: req.params.id
       }
@@ -31,7 +31,7 @@ module.exports = {
     }).catch(next)
   },
   remove: function(req, res) {
-    db.Flows.destroy({
+    db.Poses.destroy({
       where: {
         id: req.params.id
       }
