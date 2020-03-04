@@ -1,7 +1,7 @@
 import React from "react";
-import "../../../styles/Card.css"
+import "../../../styles/Login.css"
 
-function Card() {
+function Login() {
     return (
         <>
             <div className="jumbotron">
@@ -103,4 +103,4 @@ function Card() {
     )
 }
 
-export default Card;
+export default Login;

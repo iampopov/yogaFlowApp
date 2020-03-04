@@ -2,13 +2,14 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Header from "./Pages/Home/components/Header";
 import Menu from "./Pages/Home/components/Menu";
-import Card from "./Pages/Login/components/Card"
+import Login from "./Pages/Login/components/Login.js"
 import Constructor from "./Pages/Home/components/Constructor";
 import Flows from "./Pages/Home/components/Flows";
 import Category from "./Pages/Home/components/Category"
 
 import logo from './logo.svg';
 import "./App.css";
+
 
 function App() {
   return (
@@ -22,7 +23,7 @@ function App() {
             <Category />
           </Route> */}
           <Route exact path='/'>
-            <Card />
+            <Login />
           </Route>
 
           <Route exact path='/home'>
@@ -41,7 +42,7 @@ function App() {
             <Category />
           </Route>
 
-          <Route exact path='/login' component={Card} />
+          <Route exact path='/login' component={Login} />
         </Switch>
       </Router>
     </div>
