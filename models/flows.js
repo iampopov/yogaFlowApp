@@ -1,28 +1,18 @@
 module.exports = function (sequelize, DataTypes) {
-<<<<<<< Updated upstream:models/flows.js
     const Flows = sequelize.define("Flows", {
         flow_name: {
-=======
-    const Poses = sequelize.define("Poses", {
-        pose_name: {
->>>>>>> Stashed changes:models/poses.js
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 len: [1]
             }
         },
-<<<<<<< Updated upstream:models/flows.js
         sound: {
-=======
-        instructions: {
->>>>>>> Stashed changes:models/poses.js
             type: DataTypes.STRING,
             validate: {
                 len: [1]
             }
         },
-<<<<<<< Updated upstream:models/flows.js
         rating: {
             type: DataTypes.DECIMAL,
             validate: {
@@ -30,15 +20,11 @@ module.exports = function (sequelize, DataTypes) {
             }
         },
         instructor: {
-=======
-        picture: {
->>>>>>> Stashed changes:models/poses.js
             type: DataTypes.STRING,
             validate: {
                 len: [1]
             }
         },
-<<<<<<< Updated upstream:models/flows.js
         difficulty: {
             type: DataTypes.DECIMAL,
             validate: {
@@ -46,16 +32,11 @@ module.exports = function (sequelize, DataTypes) {
             }
         },
         time: {
-            type: DataTypes.INT,
-=======
-        time: {
             type: DataTypes.INTEGER,
->>>>>>> Stashed changes:models/poses.js
             allowNull: false,
             validate: {
                 len: [1]
             }
-<<<<<<< Updated upstream:models/flows.js
         },
         description: {
             type: DataTypes.TEXT,
@@ -77,14 +58,28 @@ module.exports = function (sequelize, DataTypes) {
             validate: {
                 len: [1]
             }
-=======
->>>>>>> Stashed changes:models/poses.js
+        },
+        type: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                len: [1]
+            }
+        },
+        healing: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                len: [1]
+            }
         }
-        
     })
-<<<<<<< Updated upstream:models/flows.js
+   
+    
+    Flows.associate = ((models) => {
+        models.Flows.belongsToMany(models.Students, { through: "StudentFlow", foreignKey: 'flow_id', targetKey: 'id' });
+        models.Flows.belongsTo(models.Teachers)
+    });
+
     return Flows
-=======
-    return Poses
->>>>>>> Stashed changes:models/poses.js
 }

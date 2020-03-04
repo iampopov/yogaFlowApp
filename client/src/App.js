@@ -1,10 +1,14 @@
-import React from 'react';
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Header from "./Pages/Home/components/Header";
 import Menu from "./Pages/Home/components/Menu";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Card from "./Pages/Login/components/Card"
+import Constructor from "./Pages/Home/components/Constructor";
+import Flows from "./Pages/Home/components/Flows";
+import Category from "./Pages/Login/components/Category"
+
 import logo from './logo.svg';
-import './App.css';
+import "./App.css";
 
 function App() {
   return (
@@ -14,15 +18,26 @@ function App() {
 
       <Router>
         <Switch>
+          {/* <Route exact path='/category'>
+            <Category />
+          </Route> */}
           <Route exact path='/'>
             <Card />
+            <Category />
           </Route>
 
           <Route exact path='/home'>
             <Header />
             <Menu />
           </Route>
-
+          <Route exact path='/constructor'>
+            <Header />
+            <Constructor />
+          </Route>
+          <Route exact path='/flows'>
+            <Header />
+            <Flows />
+          </Route>
 
 
           <Route exact path='/login' component={Card} />
