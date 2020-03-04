@@ -4,85 +4,85 @@ import "../../../styles/Card.css"
 function Card() {
     return (
         <>
-            <div class="jumbotron">
-                <h1 class="display-4">Yogi!</h1>
-                <p class="lead">Find your flow</p>
-                <hr class="my-4"></hr>
+            <div className="jumbotron">
+                <h1 className="display-4">Yogi!</h1>
+                <p className="lead">Find your flow</p>
+                <hr className="my-4"></hr>
                 <p>For yogis alike, imorove your mind, body, and soul.</p>
-                <a class="btn btn-primary btn-lg" href="#" role="button">Sign Up</a>
-                <a class="btn btn-danger btn-lg" href="#" role="button">Sign In </a>
+                <a className="btn btn-primary btn-lg" href="#" role="button">Sign Up</a>
+                <a className="btn btn-danger btn-lg" href="#" role="button">Sign In </a>
 
             </div>
 
-            <div class="signUp">
+            <div className="signUp">
 
                 <form>
-                    <div class="form-group">
+                    <div className="form-group">
                         <label for="exampleInputEmail1">Email address</label>
                         <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"></input>
                     </div>
-                    <div class="form-group">
+                    <div className="form-group">
                         <label for="exampleInputPassword1">Password</label>
                         <input type="password" class="form-control" id="exampleInputPassword1"></input>
                     </div>
 
                     <hr></hr>
-{/* 
+                    {/* {/*  */}
                     <h3>Types</h3>
 
 
-                    <div class="types">
-                        <div class="form-group form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1"></input>
-                            <label class="form-check-label" for="exampleCheck1">Vigorous Vinyasas</label>
+                    <div className="types">
+                        <div className="form-group form-check">
+                            <input type="checkbox" className="form-check-input" id="exampleCheck1"></input>
+                            <label className="form-check-label" for="exampleCheck1">Vigorous Vinyasas</label>
                         </div>
-                        <div class="form-group form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1"></input>
-                            <label class="form-check-label" for="exampleCheck1">Ashtanga</label>
+                        <div className="form-group form-check">
+                            <input type="checkbox" className="form-check-input" id="exampleCheck1"></input>
+                            <label className="form-check-label" for="exampleCheck1">Ashtanga</label>
                         </div>
-                        <div class="form-group form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1"></input>
-                            <label class="form-check-label" for="exampleCheck1">Power Yoga</label>
+                        <div className="form-group form-check">
+                            <input type="checkbox" className="form-check-input" id="exampleCheck1"></input>
+                            <label className="form-check-label" for="exampleCheck1">Power Yoga</label>
                         </div>
-                        <div class="form-group form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1"></input>
-                            <label class="form-check-label" for="exampleCheck1">Jivamukti</label>
+                        <div className="form-group form-check">
+                            <input type="checkbox" className="form-check-input" id="exampleCheck1"></input>
+                            <label className="form-check-label" for="exampleCheck1">Jivamukti</label>
                         </div>
-                        <div class="form-group form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1"></input>
-                            <label class="form-check-label" for="exampleCheck1">Kali Ray TriYoga</label>
+                        <div className="form-group form-check">
+                            <input type="checkbox" className="form-check-input" id="exampleCheck1"></input>
+                            <label className="form-check-label" for="exampleCheck1">Kali Ray TriYoga</label>
                         </div>
                     </div>
 
-                    
-<h3>Things</h3>
-                    <div class="things">
+
+                    <h3>Things</h3>
+                    <div className="things">
 
 
-                        <div class="things">
-                            <div class="form-group form-check">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1"></input>
-                                <label class="form-check-label" for="exampleCheck1">Realxing</label>
+                        <div className="things">
+                            <div className="form-group form-check">
+                                <input type="checkbox" className="form-check-input" id="exampleCheck1"></input>
+                                <label className="form-check-label" for="exampleCheck1">Realxing</label>
                             </div>
-                            <div class="form-group form-check">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1"></input>
-                                <label class="form-check-label" for="exampleCheck1">Sweat</label>
+                            <div className="form-group form-check">
+                                <input type="checkbox" className="form-check-input" id="exampleCheck1"></input>
+                                <label className="form-check-label" for="exampleCheck1">Sweat</label>
                             </div>
-                            <div class="form-group form-check">
+                            <div className="form-group form-check">
                                 <input type="checkbox" class="form-check-input" id="exampleCheck1"></input>
-                                <label class="form-check-label" for="exampleCheck1">Pain</label>
+                                <label className="form-check-label" for="exampleCheck1">Pain</label>
                             </div>
-                            <div class="form-group form-check">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1"></input>
-                                <label class="form-check-label" for="exampleCheck1">Breath</label>
+                            <div className="form-group form-check">
+                                <input type="checkbox" className="form-check-input" id="exampleCheck1"></input>
+                                <label className="form-check-label" for="exampleCheck1">Breath</label>
                             </div>
-                            <div class="form-group form-check">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1"></input>
-                                <label class="form-check-label" for="exampleCheck1">help</label>
+                            <div className="form-group form-check">
+                                <input type="checkbox" className="form-check-input" id="exampleCheck1"></input>
+                                <label className="form-check-label" for="exampleCheck1">help</label>
                             </div>
                         </div>
 
-                    </div> */}
+                    </div>
 
 
 
@@ -97,7 +97,7 @@ function Card() {
 
 
 
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" className="btn btn-primary">Submit</button>
                 </form>
             </div>
         </>
