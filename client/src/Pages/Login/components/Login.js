@@ -17,28 +17,28 @@ function Login() {
             <div className="signUp">
                 <form>
                     <div className="form-group">
-                        <label for="exampleInputPassword1">Name</label>
+                        <label for="exampleInputPassword1"><strong>Name</strong></label>
                         <input type="password" class="form-control" id="exampleInputPassword1"></input>
                     </div>
 
                     <hr></hr>
 
                     <div className="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
+                        <label for="exampleInputEmail1"><strong>Email Address</strong></label>
                         <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"></input>
                     </div>
 
                     <hr></hr>
 
                     <div className="form-group">
-                        <label for="exampleInputPassword1">Username</label>
+                        <label for="exampleInputPassword1"><strong>Username</strong></label>
                         <input type="password" class="form-control" id="exampleInputPassword1"></input>
                     </div>
 
                     <hr></hr>
 
                     <div className="form-group">
-                        <label for="exampleInputPassword1">Password</label>
+                        <label for="exampleInputPassword1"><strong>Password</strong></label>
                         <input type="password" class="form-control" id="exampleInputPassword1"></input>
                     </div>
 
@@ -82,7 +82,7 @@ function Login() {
                         </div>
                         <div className="form-group form-check">
                             <input type="checkbox" className="form-check-input" id="exampleCheck1"></input>
-                            <label className="form-check-label" for="exampleCheck1">Sweat</label>
+                            <label className="form-check-label" for="exampleCheck1">Healing</label>
                         </div>
                         <div className="form-group form-check">
                             <input type="checkbox" className="form-check-input" id="exampleCheck1"></input>
