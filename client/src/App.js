@@ -5,6 +5,7 @@ import Menu from "./Pages/Home/components/Menu";
 import Card from "./Pages/Login/components/Card"
 import Constructor from "./Pages/Home/components/Constructor";
 import Flows from "./Pages/Home/components/Flows";
+import Category from "./Pages/Login/components/Category"
 
 import logo from './logo.svg';
 import "./App.css";
@@ -17,8 +18,12 @@ function App() {
 
       <Router>
         <Switch>
+          {/* <Route exact path='/category'>
+            <Category />
+          </Route> */}
           <Route exact path='/'>
             <Card />
+            <Category />
           </Route>
 
           <Route exact path='/home'>
