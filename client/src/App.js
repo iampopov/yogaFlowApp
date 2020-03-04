@@ -5,7 +5,7 @@ import Menu from "./Pages/Home/components/Menu";
 import Card from "./Pages/Login/components/Card"
 import Constructor from "./Pages/Home/components/Constructor";
 import Flows from "./Pages/Home/components/Flows";
-import Category from "./Pages/Login/components/Category"
+import Category from "./Pages/Home/components/Category"
 
 import logo from './logo.svg';
 import "./App.css";
@@ -23,7 +23,6 @@ function App() {
           </Route> */}
           <Route exact path='/'>
             <Card />
-            <Category />
           </Route>
 
           <Route exact path='/home'>
@@ -38,7 +37,9 @@ function App() {
             <Header />
             <Flows />
           </Route>
-
+          <Route exact path='/categories'>
+            <Category />
+          </Route>
 
           <Route exact path='/login' component={Card} />
         </Switch>
