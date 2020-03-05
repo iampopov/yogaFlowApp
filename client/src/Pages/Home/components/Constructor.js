@@ -20,25 +20,19 @@ const Constructor = props => {
     //const [time, setTime] = useState()
 
     const handleInputChange = event => {
-        //console.log(event.target.value);
-        
-        //setTime(event.target.value);
         // grab id of the time you want to change
-       // console.log(event.target.id);
+        let trgt = poses.findIndex(x => x.uniqueId === event.target.id);
         
         // make a copy of the poses state array
-        //myArray.find(x => x.id === '45').foo;
-        
-        //console.log(poses.filter(x => x.uniqueId === event.target.id)); //.uniqueId === event.target.id
-        let addTime = poses.find(x => x.uniqueId === event.target.id);
-        // set the seconds on the particular object inside that copied array
-        console.log(addTime);
-        
-        //addTime[0].duration = event.target.value;
-        //console.log(addTime);
-        
-        // store updated array in state
+        let newPoses = [...poses]
 
+        // set the seconds on the particular object inside that copied array
+        
+        newPoses[trgt].duration=event.target.value
+
+        // store updated array in state
+        setPoses(newPoses)
+        
       };
 
       const handlePoseDelete = (event) => {
@@ -71,13 +65,8 @@ const Constructor = props => {
     }}
 
     const ReactUploadFile = (e) =>{
-        console.log(e.target.files)
-        const files = e.target.files[0]
-        const bodyFormData = new FormData();
-        console.log(files)
-        bodyFormData.append("files", files);
-
-        API.uploadFile(bodyFormData).then(data=>{
+        API.uploadFile(e.target)
+        .then(data=>{
             console.log(data)
         })
         .catch(err=>{
@@ -103,7 +92,7 @@ const Constructor = props => {
                             <CardImg height="42" width="42" src={pose.img_url} alt={pose.english_name} id={shortid.generate()}/>
                             </div>
                             <div className="col-6">
-                            <Input type="text" placeholder="seconds" key={pose.sequence} id={pose.uniqueId} onChange={handleInputChange}/>
+                            <Input type="text" placeholder="seconds" key={pose.sequence} id={pose.uniqueId} onChange={handleInputChange} value={poses.duration}/>
                     </div>
                         </Row>
                         <Row>
