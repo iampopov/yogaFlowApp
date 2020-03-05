@@ -17,17 +17,55 @@ var yogaPosesArr = [{"id":1,
 
 const Constructor = props => {
     const [poses, setPoses] = useState([])
+    //const [time, setTime] = useState()
 
-    const handleFormSubmit = (e) => {
+    const handleInputChange = event => {
+        //console.log(event.target.value);
+        
+        //setTime(event.target.value);
+        // grab id of the time you want to change
+       // console.log(event.target.id);
+        
+        // make a copy of the poses state array
+        //myArray.find(x => x.id === '45').foo;
+        
+        //console.log(poses.filter(x => x.uniqueId === event.target.id)); //.uniqueId === event.target.id
+        let addTime = poses.find(x => x.uniqueId === event.target.id);
+        // set the seconds on the particular object inside that copied array
+        console.log(addTime);
+        
+        //addTime[0].duration = event.target.value;
+        //console.log(addTime);
+        
+        // store updated array in state
+
+      };
+
+      const handlePoseDelete = (event) => {
+        //grab id of item to delete
+        let toDelete = poses.findIndex(x => x.uniqueId === event.target.id);
+        //console.log(toDelete);
+        
+        //make a copy of array to mutate so we don't change original array
+        let newPoses = [...poses]
+        // splice it out from the array
+        newPoses.splice(toDelete, 1)
+        //updating state so it re-renders
+        setPoses(newPoses);
+        
+      }
+
+    const handleAddPose = (e) => {
     e.preventDefault();
     //console.log(yogaPosesArr[e.target.id]);
     
     if(e.target.id) {
         //console.log(e.target.id);
-        const pose = yogaPosesArr[e.target.id-1]
-        pose.sequence = (poses.length)
+        let pose = yogaPosesArr[e.target.id-1];
+        pose = {...pose}
+        pose.sequence = (poses.length+1)
         pose.uniqueId = shortid.generate()
-        console.log(poses.length+1);
+        //console.log(poses.length+1);
         setPoses([...poses, pose])
         //console.log(poses);
     }}
@@ -53,14 +91,14 @@ const Constructor = props => {
       <Row>{poses.length ? (<h2>This is your flow:</h2>) : (<h2>Select from the poses below:</h2>) }</Row>
             <div className="row">
                 {poses.map(pose => (
-                    <div className="col-6" key={shortid.generate()} onClick={handleFormSubmit}>
+                    <div className="col-6" key={shortid.generate()} >
                         <ListGroupItem>
                         <Row>
                             <div className="col-6">
                             <CardImg height="42" width="42" src={pose.img_url} alt={pose.english_name} id={shortid.generate()}/>
                             </div>
                             <div className="col-6">
-                            <Input type="text" placeholder="seconds" key={pose.sequence}/>
+                            <Input type="text" placeholder="seconds" key={pose.sequence} id={pose.uniqueId} onChange={handleInputChange}/>
                     </div>
                         </Row>
                         <Row>
@@ -71,7 +109,7 @@ const Constructor = props => {
                         </ul>
                         </div>
                         <div className="col-6">
-                        <Button key={pose.sequence}>Delete</Button>
+                        <Button key={pose.sequence} id={pose.uniqueId} onClick={handlePoseDelete}>Delete</Button>
                 </div>
                         </Row>
                         </ListGroupItem>
@@ -82,7 +120,7 @@ const Constructor = props => {
             <List>
             <div className="row">
                 {yogaPosesArr.map(pose => (
-                    <div className="col-6" key={pose.id} onClick={handleFormSubmit}>
+                    <div className="col-6" key={pose.id} onClick={handleAddPose}>
                         <ListGroupItem><CardImg height="42" width="42" src={pose.img_url} alt={pose.english_name} id={pose.id}/><ul><li>{pose.sanskrit_name}</li><li>{pose.english_name}</li></ul></ListGroupItem>
                     </div>
                 ))}
