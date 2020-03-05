@@ -13,7 +13,18 @@ const SignUpForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(formObject)
-        API.createNewUser(formObject);
+        API.createNewUser(formObject)
+            .then(newUser => {
+                setFormObject({
+                    student_name: "",
+                    email: "",
+                    password: "",
+                    login: ""
+                })
+            })
+            .catch(err => {
+                console.log("err")
+            })
     }
 
     const handleChangeForm = (e) => {
@@ -26,28 +37,28 @@ const SignUpForm = () => {
         <form>
             <div className="form-group">
                 <label htmlFor="Inputstudent_name"><strong>Name</strong></label>
-                <input type="text" name="student_name" onChange={handleChangeForm} value={formObject.student_name} class="form-control" id="Inputstudent_name"></input>
+                <input type="text" name="student_name" onChange={handleChangeForm} value={formObject.student_name} className="form-control" id="Inputstudent_name"></input>
             </div>
 
             <hr></hr>
 
             <div className="form-group">
                 <label htmlFor="Inputemail"><strong>Email Address</strong></label>
-                <input type="email" name="email" onChange={handleChangeForm} value={formObject.email} class="form-control" id="Inputemail" aria-describedby="emailHelp"></input>
+                <input type="email" name="email" onChange={handleChangeForm} value={formObject.email} className="form-control" id="Inputemail" aria-describedby="emailHelp"></input>
             </div>
 
             <hr></hr>
 
             <div className="form-group">
                 <label htmlFor="Inputlogin"><strong>Username</strong></label>
-                <input type="text" name="login" onChange={handleChangeForm} value={formObject.login} class="form-control" id="Inputlogin"></input>
+                <input type="text" name="login" onChange={handleChangeForm} value={formObject.login} className="form-control" id="Inputlogin"></input>
             </div>
 
             <hr></hr>
 
             <div className="form-group">
                 <label htmlFor="InputPassword"><strong>Password</strong></label>
-                <input type="password" name="password" onChange={handleChangeForm} value={formObject.password} class="form-control" id="InputPassword"></input>
+                <input type="password" name="password" onChange={handleChangeForm} value={formObject.password} className="form-control" id="InputPassword"></input>
             </div>
 
             <hr></hr>

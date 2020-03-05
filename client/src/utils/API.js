@@ -24,7 +24,7 @@ export default {
         })
     },
 
-    createNewUser: function (user) {
+    createNewUser:async function (user) {
         console.log(user)
         axios.post("api/students/", user);
     }
