@@ -5,10 +5,10 @@ function Login() {
     return (
         <>
             <div className="jumbotron">
-                <h1 className="display-4">Yogi!</h1>
-                <p className="lead">Find your flow</p>
+                <h1 className="display-4">Y<i class="fas fa-peace"></i><strong>GI</strong></h1>
+                <p className="lead"><strong>Find Your Flow</strong></p>
                 <hr className="my-4"></hr>
-                <p>For yogis alike, imorove your mind, body, and soul.</p>
+                <p className="lead"><strong>For yogis alike, imorove your mind, body, and soul.</strong></p>
                 <a className="btn btn-primary btn-lg" href="#" role="button">Sign Up</a>
                 <a className="btn btn-danger btn-lg" href="#" role="button">Sign In </a>
             </div>
@@ -45,7 +45,9 @@ function Login() {
                     <hr></hr>
 
                     <h3>Favorites</h3>
+                    <p>Select your favorite yoga categories</p>
 
+                    <hr></hr>
 
                     <div className="types">
                         <div className="form-group form-check">
@@ -74,7 +76,7 @@ function Login() {
                     <div className="things">
                         <div className="form-group form-check">
                             <input type="checkbox" className="form-check-input" id="exampleCheck1"></input>
-                            <label className="form-check-label" for="exampleCheck1">Relax </label>
+                            <label className="form-check-label" for="exampleCheck1">Relief</label>
                         </div>
                         <div className="form-group form-check">
                             <input type="checkbox" className="form-check-input" id="exampleCheck1"></input>
@@ -86,7 +88,7 @@ function Login() {
                         </div>
                         <div className="form-group form-check">
                             <input type="checkbox" className="form-check-input" id="exampleCheck1"></input>
-                            <label className="form-check-label" for="exampleCheck1">Stretch</label>
+                            <label className="form-check-label" for="exampleCheck1">Flexibility</label>
                         </div>
                         <div className="form-group form-check">
                             <input type="checkbox" className="form-check-input" id="exampleCheck1"></input>
