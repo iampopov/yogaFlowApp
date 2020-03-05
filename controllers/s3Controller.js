@@ -1,5 +1,5 @@
 const AWS = require("aws-sdk");
-const fileUpload = require("express-fileupload");
+
 
 const s3 = new AWS.S3({
     accessKeyId: process.env.REACT_APP_AMAZONACCESSKEY,
@@ -10,11 +10,13 @@ const s3 = new AWS.S3({
 module.exports = {
     uploadFile: async function (req, res) {
         console.log("got in the call")
+        console.log(req.files.files.data)
         if (!req.files) {
             return res.status(400).send("No file was uploaded.");
         }
 
-        const uploadFile = req.files.upload;
+        const uploadFile = req.files.files;
+        console.log(uploadFile)
         const params = {
             Body: uploadFile.data, // data from uploaded file
             Bucket: "yogaflowapp", // bucket name
