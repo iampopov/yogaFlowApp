@@ -3,7 +3,7 @@ const flowRoutes = require("./flows");
 const posesRoutes = require("./poses");
 const studentsRoutes = require("./students");
 const teachersRoutes = require("./teachers");
-const s3routes = require("./s3routes")
+const s3routes = require("./s3routes");
 
 
 // our routes

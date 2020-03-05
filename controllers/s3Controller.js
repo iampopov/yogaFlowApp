@@ -1,5 +1,6 @@
-
 const AWS = require("aws-sdk");
+const fileUpload = require("express-fileupload");
+
 const s3 = new AWS.S3({
     accessKeyId: process.env.REACT_APP_AMAZONACCESSKEY,
     secretAccessKey: process.env.REACT_APP_AMAZONSECRETACCESSKEY
@@ -8,7 +9,7 @@ const s3 = new AWS.S3({
 
 module.exports = {
     uploadFile: async function (req, res) {
-
+        console.log("got in the call")
         if (!req.files) {
             return res.status(400).send("No file was uploaded.");
         }
@@ -29,7 +30,7 @@ module.exports = {
             // could write to your db if needed, now that you have the url path for the
             // newly uploaded file!
             res.json({ url: response.Location, data: req.body });
-        });
+        })
 
     }
 
