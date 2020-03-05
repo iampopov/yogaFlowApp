@@ -3,6 +3,7 @@ import { Jumbotron, Button, Form, FormGroup, Label, Input, FormText, Card, CardI
 import { Link } from "react-router-dom";
 // import { yogaPosesArr } from "./yogaPoses";
 import { List, ListItem } from "./List";
+import API from '../../../utils/API';
 const shortid = require('shortid');
 const uid = shortid.generate();
 var yogaPosesArr = [{"id":1,
@@ -17,14 +18,6 @@ var yogaPosesArr = [{"id":1,
 const Constructor = props => {
     const [poses, setPoses] = useState([])
 
-    // useEffect(() => {
-    //     loadPoses()
-    // }, []);
-
-    // function loadPoses(poses) {
-
-    // }
-
     const handleFormSubmit = (e) => {
     e.preventDefault();
     //console.log(yogaPosesArr[e.target.id]);
@@ -33,12 +26,21 @@ const Constructor = props => {
         //console.log(e.target.id);
         const pose = yogaPosesArr[e.target.id-1]
         pose.sequence = (poses.length)
-        //console.log(poses.length+1);
+        pose.uniqueId = shortid.generate()
+        console.log(poses.length+1);
         setPoses([...poses, pose])
         //console.log(poses);
-    }
-    }
+    }}
 
+    const ReactUploadFile = (e) =>{
+        API.uploadFile(e.target)
+        .then(data=>{
+            console.log(data)
+        })
+        .catch(err=>{
+            console.log(err)
+        })
+    }
 
       return (
 <>
@@ -58,10 +60,10 @@ const Constructor = props => {
                             <CardImg height="42" width="42" src={pose.img_url} alt={pose.english_name} id={shortid.generate()}/>
                             </div>
                             <div className="col-6">
-                            <Input type="text" placeholder="seconds" key={pose.sequence} />
+                            <Input type="text" placeholder="seconds" key={pose.sequence}/>
                     </div>
                         </Row>
-                         <Row>
+                        <Row>
                         <div className="col-6">
                         <ul>
                             <li>{pose.sanskrit_name}</li>
@@ -72,7 +74,7 @@ const Constructor = props => {
                         <Button key={pose.sequence}>Delete</Button>
                 </div>
                         </Row>
-                       </ListGroupItem>
+                        </ListGroupItem>
                     </div>
                 ))}
             </div>
@@ -88,7 +90,7 @@ const Constructor = props => {
             </List>
             <FormGroup>
                 <Label for="coverImage">Cover</Label>
-                <Input type="file" name="file" id="coverImage" />
+                <Input type="file" name="file" id="coverImage" onChange={ReactUploadFile}/>
                 <FormText color="muted">
                 Please upload some Cover Page (Otherwise we will use the picture of the first pose as a cover)
                 </FormText>
