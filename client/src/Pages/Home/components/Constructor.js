@@ -83,16 +83,16 @@ const Constructor = props => {
             </List>
             <FormGroup>
                 <Label for="coverImage">Cover</Label>
-                <Input type="file" name="file" id="coverImage" />
+                <Input type="file" name="file" id="coverImage" onChange={upload} />
                 <FormText color="muted">
-                Please upload some Cover Page (Otherwise we will use the picture of the first pose as a cover)
+                    Please upload some Cover Page (Otherwise we will use the picture of the first pose as a cover)
                 </FormText>
             </FormGroup>
             <FormGroup>
                 <Label for="audioFile">Audio</Label>
                 <Input type="file" name="file" id="audioFile" />
                 <FormText color="muted">
-                Please upload an audio file for your flow.
+                    Please upload an audio file for your flow.
                 </FormText>
             </FormGroup>
             <Button>Save</Button>
