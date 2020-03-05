@@ -9,8 +9,8 @@ function Login() {
                 <p className="lead"><strong>Find Your Flow</strong></p>
                 <hr className="my-4"></hr>
                 <p className="lead"><strong>For yogis alike, imorove your mind, body, and soul.</strong></p>
-                <a className="btn btn-primary btn-lg" href="#" role="button">Sign Up</a>
-                <a className="btn btn-danger btn-lg" href="#" role="button">Sign In </a>
+                <a className="btn btn-lg" href="#" role="button">Sign Up</a>
+                <a className="btn btn-lg" href="#" role="button">Sign In </a>
             </div>
 
 
@@ -55,49 +55,49 @@ function Login() {
                             <label className="form-check-label" for="exampleCheck1">Vigorous Vinyasas</label>
                         </div>
                         <div className="form-group form-check">
-                            <input type="checkbox" className="form-check-input" id="exampleCheck1"></input>
-                            <label className="form-check-label" for="exampleCheck1">Ashtanga</label>
+                            <input type="checkbox" className="form-check-input" id="exampleCheck2"></input>
+                            <label className="form-check-label" for="exampleCheck2">Ashtanga</label>
                         </div>
                         <div className="form-group form-check">
-                            <input type="checkbox" className="form-check-input" id="exampleCheck1"></input>
-                            <label className="form-check-label" for="exampleCheck1">Power Yoga</label>
+                            <input type="checkbox" className="form-check-input" id="exampleCheck3"></input>
+                            <label className="form-check-label" for="exampleCheck3">Power Yoga</label>
                         </div>
                         <div className="form-group form-check">
-                            <input type="checkbox" className="form-check-input" id="exampleCheck1"></input>
-                            <label className="form-check-label" for="exampleCheck1">Jivamukti</label>
+                            <input type="checkbox" className="form-check-input" id="exampleCheck4"></input>
+                            <label className="form-check-label" for="exampleCheck4">Jivamukti</label>
                         </div>
                         <div className="form-group form-check">
-                            <input type="checkbox" className="form-check-input" id="exampleCheck1"></input>
-                            <label className="form-check-label" for="exampleCheck1">Kali Ray TriYoga</label>
+                            <input type="checkbox" className="form-check-input" id="exampleCheck5"></input>
+                            <label className="form-check-label" for="exampleCheck5">Kali Ray TriYoga</label>
                         </div>
                     </div>
 
 
                     <div className="things">
                         <div className="form-group form-check">
-                            <input type="checkbox" className="form-check-input" id="exampleCheck1"></input>
-                            <label className="form-check-label" for="exampleCheck1">Relief</label>
+                            <input type="checkbox" className="form-check-input" id="exampleCheck6"></input>
+                            <label className="form-check-label" for="exampleCheck6">Relief</label>
                         </div>
                         <div className="form-group form-check">
-                            <input type="checkbox" className="form-check-input" id="exampleCheck1"></input>
-                            <label className="form-check-label" for="exampleCheck1">Energy</label>
+                            <input type="checkbox" className="form-check-input" id="exampleCheck7"></input>
+                            <label className="form-check-label" for="exampleCheck7">Energy</label>
                         </div>
                         <div className="form-group form-check">
-                            <input type="checkbox" className="form-check-input" id="exampleCheck1"></input>
-                            <label className="form-check-label" for="exampleCheck1">Healing</label>
+                            <input type="checkbox" className="form-check-input" id="exampleCheck8"></input>
+                            <label className="form-check-label" for="exampleCheck8">Healing</label>
                         </div>
                         <div className="form-group form-check">
-                            <input type="checkbox" className="form-check-input" id="exampleCheck1"></input>
-                            <label className="form-check-label" for="exampleCheck1">Flexibility</label>
+                            <input type="checkbox" className="form-check-input" id="exampleCheck9"></input>
+                            <label className="form-check-label" for="exampleCheck9">Flexibility</label>
                         </div>
                         <div className="form-group form-check">
-                            <input type="checkbox" className="form-check-input" id="exampleCheck1"></input>
-                            <label className="form-check-label" for="exampleCheck1">Strength</label>
+                            <input type="checkbox" className="form-check-input" id="exampleCheck10"></input>
+                            <label className="form-check-label" for="exampleCheck10">Strength</label>
                         </div>
                     </div>
 
 
-                    <button type="button" className="btnSubmit btn-secondary btn-lg btn-block">Submit</button>
+                    <button type="button" className="btnSubmit btn-lg btn-block">Submit</button>
                 </form>
             </div>
 
