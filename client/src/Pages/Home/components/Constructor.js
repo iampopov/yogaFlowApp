@@ -3,6 +3,8 @@ import { Jumbotron, Button, Form, FormGroup, Label, Input, FormText, Card, CardI
 import { Link } from "react-router-dom";
 // import { yogaPosesArr } from "./yogaPoses";
 import { List, ListItem } from "./List";
+const shortid = require('shortid');
+const uid = shortid.generate();
 var yogaPosesArr = [{"id":1,
 "sanskrit_name":"Navasana",
 "english_name":"Boat",
@@ -29,8 +31,12 @@ const Constructor = props => {
     
     if(e.target.id) {
         //console.log(e.target.id);
-        setPoses([...poses, yogaPosesArr[e.target.id-1]])
-       console.log(poses);
+        const pose = yogaPosesArr[e.target.id-1]
+        pose.sequence = (poses.length)
+        pose.uniqueId = shortid.generate()
+        console.log(poses.length+1);
+        setPoses([...poses, pose])
+        //console.log(poses);
     }
     }
 
@@ -46,17 +52,17 @@ const Constructor = props => {
       <Row>{poses.length ? (<h2>This is your flow:</h2>) : (<h2>Select from the poses below:</h2>) }</Row>
             <div className="row">
                 {poses.map(pose => (
-                    <div className="col-6" key={Math.floor(Math.random() * 10000000000000)} onClick={handleFormSubmit}>
+                    <div className="col-6" key={shortid.generate()} onClick={handleFormSubmit}>
                         <ListGroupItem>
                         <Row>
                             <div className="col-6">
-                            <CardImg height="42" width="42" src={pose.img_url} alt={pose.english_name} id={Math.floor(Math.random() * 10000000000000)}/>
+                            <CardImg height="42" width="42" src={pose.img_url} alt={pose.english_name} id={shortid.generate()}/>
                             </div>
                             <div className="col-6">
-                            <Input type="text" placeholder="seconds" />
-                            </div>
+                            <Input type="text" placeholder="seconds" key={pose.sequence}/>
+                    </div>
                         </Row>
-                        <Row>
+                //        <Row>
                         <div className="col-6">
                         <ul>
                             <li>{pose.sanskrit_name}</li>
@@ -64,10 +70,10 @@ const Constructor = props => {
                         </ul>
                         </div>
                         <div className="col-6">
-                        <Button>Delete</Button>
-                        </div>
+                        <Button key={pose.sequence}>Delete</Button>
+                </div>
                         </Row>
-                        </ListGroupItem>
+            //            </ListGroupItem>
                     </div>
                 ))}
             </div>
