@@ -33,8 +33,7 @@ const Constructor = props => {
         //console.log(e.target.id);
         const pose = yogaPosesArr[e.target.id-1]
         pose.sequence = (poses.length)
-        pose.uniqueId = shortid.generate()
-        console.log(poses.length+1);
+        //console.log(poses.length+1);
         setPoses([...poses, pose])
         //console.log(poses);
     }
@@ -59,10 +58,10 @@ const Constructor = props => {
                             <CardImg height="42" width="42" src={pose.img_url} alt={pose.english_name} id={shortid.generate()}/>
                             </div>
                             <div className="col-6">
-                            <Input type="text" placeholder="seconds" key={pose.sequence}/>
+                            <Input type="text" placeholder="seconds" key={pose.sequence} />
                     </div>
                         </Row>
-                //        <Row>
+                         <Row>
                         <div className="col-6">
                         <ul>
                             <li>{pose.sanskrit_name}</li>
@@ -73,7 +72,7 @@ const Constructor = props => {
                         <Button key={pose.sequence}>Delete</Button>
                 </div>
                         </Row>
-            //            </ListGroupItem>
+                       </ListGroupItem>
                     </div>
                 ))}
             </div>
