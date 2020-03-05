@@ -1,7 +1,7 @@
 import React from "react";
-import "../../../styles/Card.css"
+import "../../../styles/Login.css"
 
-function Card() {
+function Login() {
     return (
         <>
             <div className="jumbotron">
@@ -11,24 +11,40 @@ function Card() {
                 <p>For yogis alike, imorove your mind, body, and soul.</p>
                 <a className="btn btn-primary btn-lg" href="#" role="button">Sign Up</a>
                 <a className="btn btn-danger btn-lg" href="#" role="button">Sign In </a>
-
             </div>
 
-            <div className="signUp">
 
+            <div className="signUp">
                 <form>
                     <div className="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"></input>
-                    </div>
-                    <div className="form-group">
-                        <label for="exampleInputPassword1">Password</label>
+                        <label for="exampleInputPassword1"><strong>Name</strong></label>
                         <input type="password" class="form-control" id="exampleInputPassword1"></input>
                     </div>
 
                     <hr></hr>
-                    {/* {/*  */}
-                    <h3>Types</h3>
+
+                    <div className="form-group">
+                        <label for="exampleInputEmail1"><strong>Email Address</strong></label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"></input>
+                    </div>
+
+                    <hr></hr>
+
+                    <div className="form-group">
+                        <label for="exampleInputPassword1"><strong>Username</strong></label>
+                        <input type="password" class="form-control" id="exampleInputPassword1"></input>
+                    </div>
+
+                    <hr></hr>
+
+                    <div className="form-group">
+                        <label for="exampleInputPassword1"><strong>Password</strong></label>
+                        <input type="password" class="form-control" id="exampleInputPassword1"></input>
+                    </div>
+
+                    <hr></hr>
+
+                    <h3>Favorites</h3>
 
 
                     <div className="types">
@@ -55,53 +71,36 @@ function Card() {
                     </div>
 
 
-                    <h3>Things</h3>
                     <div className="things">
-
-
-                        <div className="things">
-                            <div className="form-group form-check">
-                                <input type="checkbox" className="form-check-input" id="exampleCheck1"></input>
-                                <label className="form-check-label" for="exampleCheck1">Realxing</label>
-                            </div>
-                            <div className="form-group form-check">
-                                <input type="checkbox" className="form-check-input" id="exampleCheck1"></input>
-                                <label className="form-check-label" for="exampleCheck1">Sweat</label>
-                            </div>
-                            <div className="form-group form-check">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1"></input>
-                                <label className="form-check-label" for="exampleCheck1">Pain</label>
-                            </div>
-                            <div className="form-group form-check">
-                                <input type="checkbox" className="form-check-input" id="exampleCheck1"></input>
-                                <label className="form-check-label" for="exampleCheck1">Breath</label>
-                            </div>
-                            <div className="form-group form-check">
-                                <input type="checkbox" className="form-check-input" id="exampleCheck1"></input>
-                                <label className="form-check-label" for="exampleCheck1">help</label>
-                            </div>
+                        <div className="form-group form-check">
+                            <input type="checkbox" className="form-check-input" id="exampleCheck1"></input>
+                            <label className="form-check-label" for="exampleCheck1">Relax </label>
                         </div>
-
+                        <div className="form-group form-check">
+                            <input type="checkbox" className="form-check-input" id="exampleCheck1"></input>
+                            <label className="form-check-label" for="exampleCheck1">Energy</label>
+                        </div>
+                        <div className="form-group form-check">
+                            <input type="checkbox" className="form-check-input" id="exampleCheck1"></input>
+                            <label className="form-check-label" for="exampleCheck1">Healing</label>
+                        </div>
+                        <div className="form-group form-check">
+                            <input type="checkbox" className="form-check-input" id="exampleCheck1"></input>
+                            <label className="form-check-label" for="exampleCheck1">Stretch</label>
+                        </div>
+                        <div className="form-group form-check">
+                            <input type="checkbox" className="form-check-input" id="exampleCheck1"></input>
+                            <label className="form-check-label" for="exampleCheck1">Strength</label>
+                        </div>
                     </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-                    <button type="submit" className="btn btn-primary">Submit</button>
+                    <button type="button" className="btnSubmit btn-secondary btn-lg btn-block">Submit</button>
                 </form>
             </div>
+
         </>
     )
 }
 
-export default Card;
+export default Login;

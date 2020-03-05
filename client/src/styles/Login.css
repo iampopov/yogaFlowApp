@@ -1,0 +1,54 @@
+.jumbotron{
+    background-color: pink;
+    text-align: center;
+    margin: 20px;
+    color: darkslategray;
+}
+
+.btn{
+    margin-right: 10px;
+}
+
+.signUp{
+    margin: 20px;
+}
+
+.types{
+    background-color: green;
+    width: 20%;
+    border-radius: 12px;
+    display: block;
+    float: left;
+    padding-left: 10px;
+    padding-top: 10px;
+    margin-left: 30%;
+}
+
+.things{
+    background-color: purple;
+    width: 20%;
+    border-radius: 12px;
+    display: block;
+    float: right;
+    padding-left: 10px;
+    padding-top: 10px;
+    margin-right: 30%;
+    margin-bottom: 15px;
+}
+
+h3{
+    text-align: center;
+}
+
+.btnSubmit{
+    color: pink;
+    background-color: gray;
+}
+
+hr{
+    border-top: 3px solid darkslategray;
+}
+
+p{
+    color: darkslategray;
+}
