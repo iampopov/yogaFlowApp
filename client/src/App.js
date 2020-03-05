@@ -19,9 +19,7 @@ function App() {
 
       <Router>
         <Switch>
-          {/* <Route exact path='/category'>
-            <Category />
-          </Route> */}
+          
           <Route exact path='/'>
             <Login />
           </Route>
