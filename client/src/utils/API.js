@@ -11,21 +11,22 @@ export default {
             url: "/api/s3",
             data: file,
             headers: {
-                'Content-Type': 'multipart/form-data', 
+                'Content-Type': 'multipart/form-data',
                 "processData": false,
                 "contentType": false,
                 "cache": false,
                 "timeout": 600000,
             }
-        }).then(res=>{
-            console.log("worked?")
+        }).then(res => {
             console.log(res)
-        }).catch(err=>{
+        }).catch(err => {
             console.log(err)
         })
+    },
 
-
-        // return axios.post("/api/s3", file);
+    createNewUser: function (user) {
+        console.log(user)
+        axios.post("api/students/", user);
     }
 };
 
