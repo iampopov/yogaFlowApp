@@ -71,8 +71,13 @@ const Constructor = props => {
     }}
 
     const ReactUploadFile = (e) =>{
-        API.uploadFile(e.target)
-        .then(data=>{
+        console.log(e.target.files)
+        const files = e.target.files[0]
+        const bodyFormData = new FormData();
+        console.log(files)
+        bodyFormData.append("files", files);
+
+        API.uploadFile(bodyFormData).then(data=>{
             console.log(data)
         })
         .catch(err=>{
