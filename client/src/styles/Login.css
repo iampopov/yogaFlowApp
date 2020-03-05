@@ -1,54 +1,76 @@
 .jumbotron{
-    background-color: pink;
     text-align: center;
     margin: 20px;
-    color: darkslategray;
+    color: #EDC7B7;
+    background: none;
+    font-family: 'Spartan', sans-serif;
+    font-weight: bold;
 }
 
 .btn{
     margin-right: 10px;
+    background-color: #EDC7B7;
+    border: none;
+    color: #123C69 ;
+}
+
+.btn:hover{
+    color: #123C69;
+    background-color: #5AAA95;
 }
 
 .signUp{
     margin: 20px;
 }
 
+label{
+    color: #EDC7B7;
+    font-family: 'Spartan', sans-serif;
+}
 .types{
-    background-color: green;
+    background: none;
     width: 20%;
-    border-radius: 12px;
     display: block;
     float: left;
-    padding-left: 10px;
-    padding-top: 10px;
-    margin-left: 30%;
+    margin-left: 35%;
+    color: #EDC7B7;
+    font-family: 'Spartan', sans-serif;
 }
 
 .things{
-    background-color: purple;
-    width: 20%;
-    border-radius: 12px;
+    background: none;
     display: block;
     float: right;
-    padding-left: 10px;
-    padding-top: 10px;
-    margin-right: 30%;
+    margin-right: 35%;
     margin-bottom: 15px;
+    color: #EDC7B7;
+    font-family: 'Spartan', sans-serif;
 }
 
 h3{
     text-align: center;
+    color: #EDC7B7;
+    font-family: 'Spartan', sans-serif;
 }
 
 .btnSubmit{
-    color: pink;
-    background-color: gray;
+    color: #123C69 ;
+    background-color: #EDC7B7;
 }
 
 hr{
-    border-top: 3px solid darkslategray;
+    border-top: 3px solid #EDC7B7;
 }
 
 p{
-    color: darkslategray;
+    color: #EDC7B7;
+    font-family: 'Spartan', sans-serif;
+    text-align: center;
 }
+
+body {
+    background-image: url(../images/Calm\ Ocean.jpg);
+    background-size: cover;
+    background-position: center top;
+}
+  
