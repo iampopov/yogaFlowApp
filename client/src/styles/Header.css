@@ -3,15 +3,6 @@
     text-align: center;
     margin: 20px;
     color: #EDC7B7;
-    background: none;
     font-family: 'Spartan', sans-serif;
     font-weight: bold;
 }
-
-body {
-    background-image: url(../images/arches.png);
-    background-size: cover;
-    background-position: center top;
-}
-
-

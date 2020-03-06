@@ -17,6 +17,10 @@ const SignInForm = () => {
                 </div>
 
                 <hr></hr>
+
+                <button type="button" class="btn btn-lg btn-block">Sign in</button>
+
+
             </form>
         </div>)
 }

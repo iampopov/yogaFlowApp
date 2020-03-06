@@ -16,7 +16,6 @@ function App() {
     <div className="container">
 
 
-
       <Router>
         <Switch>
           
@@ -28,14 +27,17 @@ function App() {
             <Header />
             <Menu />
           </Route>
+
           <Route exact path='/constructor'>
             <Header />
             <Constructor />
           </Route>
+
           <Route exact path='/flows'>
             <Header />
             <Flows />
           </Route>
+
           <Route exact path='/categories'>
             <Category />
           </Route>
