@@ -1,0 +1,16 @@
+h2{
+    border: none;
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+.wrapping{
+    background-color: #9E768F;
+    border-radius: 12px;
+    opacity: 0.5;
+    
+}
+
+.wrapping:hover{
+    opacity: 1;
+}
