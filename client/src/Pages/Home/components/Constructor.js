@@ -53,69 +53,69 @@ const Constructor = props => {
 
     return (
         <>
-        <div className="wrapping">
-            <Jumbotron>
-                <FormGroup>
-                    <h4 for="nameFlow">Name your flow:</h4>
-                    <Input type="text" id="nameFlow" placeholder="flow name" />
-                </FormGroup>
-                <List>
-                    <Row>{poses.length ? (<h2>This is your flow:</h2>) : (<h2>Select from the poses below:</h2>)}</Row>
-                    <div className="row">
-                        {poses.map(pose => (
-                            <div className="col-6" key={shortid.generate()} onClick={handleFormSubmit}>
-                                <ListGroupItem>
-                                    <Row>
-                                        <div className="col-6">
-                                            <CardImg height="42" width="42" src={pose.img_url} alt={pose.english_name} id={shortid.generate()} />
-                                        </div>
-                                        <div className="col-6">
-                                            <Input type="text" placeholder="seconds" key={pose.sequence} />
-                                        </div>
-                                    </Row>
-                                    <Row>
-                                        <div className="col-6">
-                                            <ul>
-                                                <li>{pose.sanskrit_name}</li>
-                                                <li>{pose.english_name}</li>
-                                            </ul>
-                                        </div>
-                                        <div className="col-6">
-                                            <Button key={pose.sequence}>Delete</Button>
-                                        </div>
-                                    </Row>
-                                </ListGroupItem>
-                            </div>
-                        ))}
-                    </div>
-                </List>
-                <List>
-                    <div className="row">
-                        {yogaPosesArr.map(pose => (
-                            <div className="col-6" key={pose.id} onClick={handleFormSubmit}>
-                                <ListGroupItem><CardImg height="42" width="42" src={pose.img_url} alt={pose.english_name} id={pose.id} /><ul><li>{pose.sanskrit_name}</li><li>{pose.english_name}</li></ul></ListGroupItem>
-                            </div>
-                        ))}
-                    </div>
-                </List>
-                <FormGroup>
-                    <Label for="coverImage">Cover</Label>
-                    <Input type="file" name="file" id="coverImage" onChange={ReactUploadFile} />
-                    <FormText color="muted">
-                        Please upload some Cover Page (Otherwise we will use the picture of the first pose as a cover)
+            <div className="wrapping">
+                <Jumbotron>
+                    <FormGroup>
+                        <h4 for="nameFlow">Name your flow:</h4>
+                        <Input type="text" id="nameFlow" placeholder="flow name" />
+                    </FormGroup>
+                    <List>
+                        <Row>{poses.length ? (<h2>This is your flow:</h2>) : (<h2>Select from the poses below:</h2>)}</Row>
+                        <div className="row">
+                            {poses.map(pose => (
+                                <div className="col-6" key={shortid.generate()} onClick={handleFormSubmit}>
+                                    <ListGroupItem>
+                                        <Row>
+                                            <div className="col-6">
+                                                <CardImg height="42" width="42" src={pose.img_url} alt={pose.english_name} id={shortid.generate()} />
+                                            </div>
+                                            <div className="col-6">
+                                                <Input type="text" placeholder="seconds" key={pose.sequence} />
+                                            </div>
+                                        </Row>
+                                        <Row>
+                                            <div className="col-6">
+                                                <ul>
+                                                    <li>{pose.sanskrit_name}</li>
+                                                    <li>{pose.english_name}</li>
+                                                </ul>
+                                            </div>
+                                            <div className="col-6">
+                                                <Button key={pose.sequence}>Delete</Button>
+                                            </div>
+                                        </Row>
+                                    </ListGroupItem>
+                                </div>
+                            ))}
+                        </div>
+                    </List>
+                    <List>
+                        <div className="row">
+                            {yogaPosesArr.map(pose => (
+                                <div className="col-6" key={pose.id} onClick={handleFormSubmit}>
+                                    <ListGroupItem><CardImg height="42" width="42" src={pose.img_url} alt={pose.english_name} id={pose.id} /><ul><li>{pose.sanskrit_name}</li><li>{pose.english_name}</li></ul></ListGroupItem>
+                                </div>
+                            ))}
+                        </div>
+                    </List>
+                    <FormGroup>
+                        <Label for="coverImage">Cover</Label>
+                        <Input type="file" name="file" id="coverImage" onChange={ReactUploadFile} />
+                        <FormText color="muted">
+                            Please upload some Cover Page (Otherwise we will use the picture of the first pose as a cover)
                 </FormText>
-                </FormGroup>
-                <FormGroup>
-                    <Label for="audioFile">Audio</Label>
-                    <Input type="file" name="file" id="audioFile" />
-                    <FormText color="muted">
-                        Please upload an audio file for your flow.
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="audioFile">Audio</Label>
+                        <Input type="file" name="file" id="audioFile" />
+                        <FormText color="muted">
+                            Please upload an audio file for your flow.
                 </FormText>
-                </FormGroup>
-                <Button>Save</Button>
-            </Jumbotron>
-</div>
-            
+                    </FormGroup>
+                    <Button>Save</Button>
+                </Jumbotron>
+            </div>
+
         </>
     );
 }

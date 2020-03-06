@@ -18,7 +18,7 @@ const SignInForm = () => {
 
                 <hr></hr>
 
-                <button type="button" class="btn btn-lg btn-block">Sign in</button>
+                <button type="button" className="btn btn-lg btn-block">Sign in</button>
 
 
             </form>
