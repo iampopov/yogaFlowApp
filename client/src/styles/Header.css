@@ -1,6 +1,9 @@
 .header{
     width: 100%;
     text-align: center;
-    background-color: pink;
-    color: white;
+    background: none;
+    color: #EDC7B7;
+    font-family: 'Spartan', sans-serif;
+    font-weight: bold;
+    margin-top: 10px;
 }

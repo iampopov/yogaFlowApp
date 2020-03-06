@@ -3,6 +3,12 @@ const db = require("./models");
 const routes = require("./routes");
 const app = express();
 const PORT = process.env.PORT || 3001;
+const session = require("express-session");
+const passport = require("./config/passport");
+
+app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
