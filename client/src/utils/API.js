@@ -26,7 +26,11 @@ export default {
 
     createNewUser:async function (user) {
         console.log(user)
-        axios.post("api/students/", user);
+        return axios.post("/api/students/", user);
+    },
+
+    pullPoses: function () {
+     return axios.get("/api/poses/")  
     }
 };
 
