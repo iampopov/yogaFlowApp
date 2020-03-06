@@ -31,7 +31,11 @@ const Constructor = props => {
         newPoses[trgt].duration=event.target.value
 
         // store updated array in state
-        setPoses(newPoses)
+        setTimeout(() => {
+            setPoses(newPoses)
+        }, 1000);
+        
+        //console.log(poses);
         
       };
 
@@ -92,7 +96,7 @@ const Constructor = props => {
                             <CardImg height="42" width="42" src={pose.img_url} alt={pose.english_name} id={shortid.generate()}/>
                             </div>
                             <div className="col-6">
-                            <Input type="text" placeholder="seconds" key={pose.sequence} id={pose.uniqueId} onChange={handleInputChange} value={poses.duration}/>
+                            <Input type="text" placeholder="seconds" key={pose.sequence} id={pose.uniqueId} onChange={handleInputChange} value={pose.duration}/>
                     </div>
                         </Row>
                         <Row>
