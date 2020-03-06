@@ -3,10 +3,12 @@ import "../../../styles/Header.css"
 
 function Header() {
     return (
-   <div class="header">
-       <h1>Yogi</h1>
-   </div>
-
+        <>
+        <div className="header">
+            <h1>Yogi</h1>
+        </div>
+        
+        </>
     )
 }
 
