@@ -116,7 +116,7 @@ const SignUpForm = () => {
             </div>
 
 
-            <button type="submit" className="btnSubmit btn-lg btn-block" onClick={handleSubmit}>Submit</button>
+            <button type="submit" className="btnSubmit btn-lg btn-block" onClick={handleSubmit}>Sign Up</button>
         </form>
     </div>);
 }
