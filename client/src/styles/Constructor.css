@@ -7,10 +7,6 @@ h2{
 .wrapping{
     background-color: #9E768F;
     border-radius: 12px;
-    opacity: 0.5;
-    
 }
 
-.wrapping:hover{
-    opacity: 1;
-}
+
