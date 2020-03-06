@@ -8,7 +8,7 @@ const s3 = new AWS.S3({
 
 
 module.exports = {
-    uploadFile: async function (req, res) {
+    uploadFile: function (req, res) {
         console.log("got in the call")
         console.log(req.files.files.data)
         if (!req.files) {
@@ -20,7 +20,7 @@ module.exports = {
         const params = {
             Body: uploadFile.data, // data from uploaded file
             Bucket: "yogaflowapp", // bucket name
-            Key: `${Date.now()}-${uploadFile.name}` // file name to use for S3 bucket
+            Key: `audios/${Date.now()}-${uploadFile.name}` // file name to use for S3 bucket
         };
 
         s3.upload(params, (err, response) => {
