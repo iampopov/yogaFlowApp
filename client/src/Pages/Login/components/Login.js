@@ -1,103 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../../styles/Login.css"
+import WelcomeJumbotron from "./WelcomeJumbotron";
+import SignUpForm from "./SignUpForm";
+import SignInForm from "./SingInForm";
 
 function Login() {
+    const [signIn, setSignIn] = useState({ checked: false, signedIn: false })
+
+    const handleFormRender = (e, user) => {
+        e.preventDefault()
+        let temp = false;
+        if (user) {
+            temp = user;
+        }
+        setSignIn({
+            checked: true,
+            signedIn: temp
+        });
+    }
     return (
         <>
-            <div className="jumbotron">
-                <h1 className="display-4">Yogi!</h1>
-                <p className="lead">Find your flow</p>
-                <hr className="my-4"></hr>
-                <p>For yogis alike, imorove your mind, body, and soul.</p>
-                <a className="btn btn-primary btn-lg" href="#" role="button">Sign Up</a>
-                <a className="btn btn-danger btn-lg" href="#" role="button">Sign In </a>
-            </div>
-
-
-            <div className="signUp">
-                <form>
-                    <div className="form-group">
-                        <label for="exampleInputPassword1"><strong>Name</strong></label>
-                        <input type="password" class="form-control" id="exampleInputPassword1"></input>
-                    </div>
-
-                    <hr></hr>
-
-                    <div className="form-group">
-                        <label for="exampleInputEmail1"><strong>Email Address</strong></label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"></input>
-                    </div>
-
-                    <hr></hr>
-
-                    <div className="form-group">
-                        <label for="exampleInputPassword1"><strong>Username</strong></label>
-                        <input type="password" class="form-control" id="exampleInputPassword1"></input>
-                    </div>
-
-                    <hr></hr>
-
-                    <div className="form-group">
-                        <label for="exampleInputPassword1"><strong>Password</strong></label>
-                        <input type="password" class="form-control" id="exampleInputPassword1"></input>
-                    </div>
-
-                    <hr></hr>
-
-                    <h3>Favorites</h3>
-
-
-                    <div className="types">
-                        <div className="form-group form-check">
-                            <input type="checkbox" className="form-check-input" id="exampleCheck1"></input>
-                            <label className="form-check-label" for="exampleCheck1">Vigorous Vinyasas</label>
-                        </div>
-                        <div className="form-group form-check">
-                            <input type="checkbox" className="form-check-input" id="exampleCheck1"></input>
-                            <label className="form-check-label" for="exampleCheck1">Ashtanga</label>
-                        </div>
-                        <div className="form-group form-check">
-                            <input type="checkbox" className="form-check-input" id="exampleCheck1"></input>
-                            <label className="form-check-label" for="exampleCheck1">Power Yoga</label>
-                        </div>
-                        <div className="form-group form-check">
-                            <input type="checkbox" className="form-check-input" id="exampleCheck1"></input>
-                            <label className="form-check-label" for="exampleCheck1">Jivamukti</label>
-                        </div>
-                        <div className="form-group form-check">
-                            <input type="checkbox" className="form-check-input" id="exampleCheck1"></input>
-                            <label className="form-check-label" for="exampleCheck1">Kali Ray TriYoga</label>
-                        </div>
-                    </div>
-
-
-                    <div className="things">
-                        <div className="form-group form-check">
-                            <input type="checkbox" className="form-check-input" id="exampleCheck1"></input>
-                            <label className="form-check-label" for="exampleCheck1">Relax </label>
-                        </div>
-                        <div className="form-group form-check">
-                            <input type="checkbox" className="form-check-input" id="exampleCheck1"></input>
-                            <label className="form-check-label" for="exampleCheck1">Energy</label>
-                        </div>
-                        <div className="form-group form-check">
-                            <input type="checkbox" className="form-check-input" id="exampleCheck1"></input>
-                            <label className="form-check-label" for="exampleCheck1">Healing</label>
-                        </div>
-                        <div className="form-group form-check">
-                            <input type="checkbox" className="form-check-input" id="exampleCheck1"></input>
-                            <label className="form-check-label" for="exampleCheck1">Stretch</label>
-                        </div>
-                        <div className="form-group form-check">
-                            <input type="checkbox" className="form-check-input" id="exampleCheck1"></input>
-                            <label className="form-check-label" for="exampleCheck1">Strength</label>
-                        </div>
-                    </div>
-
-
-                    <button type="button" className="btnSubmit btn-secondary btn-lg btn-block">Submit</button>
-                </form>
-            </div>
+            {signIn.checked ? <></> : <WelcomeJumbotron handleFormRender={handleFormRender} />}
+            {signIn.checked && !signIn.signedIn ?  <SignUpForm />: signIn.checked && signIn.signedIn ? <SignInForm/>: <></> }
 
         </>
     )

@@ -37,14 +37,17 @@ function App() {
             <Category />
             <Category />
           </Route>
+
           <Route exact path='/constructor'>
             <Header />
             <Constructor />
           </Route>
+
           <Route exact path='/flows'>
             <Header />
             <Flows />
           </Route>
+
           <Route exact path='/categories'>
             <Category />
             <Category />
