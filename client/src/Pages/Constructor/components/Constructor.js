@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Jumbotron, Button, Form, FormGroup, Label, Input, FormText, Card, CardImg, CardTitle, CardText, CardGroup,  CardSubtitle, CardBody, Col, ListGroupItem, Row } from 'reactstrap';
-import { Link } from "react-router-dom";
-import { List, ListItem } from "./List";
+import { Jumbotron, Button, FormGroup, Label, Input, FormText, CardImg, ListGroupItem, Row } from 'reactstrap';
+import { List } from "../../Home/components/List";
 import API from '../../../utils/API';
 const shortid = require('shortid');
-const uid = shortid.generate();
 
 const Constructor = props => {
     const [poses, setPoses] = useState([]);
@@ -12,16 +10,13 @@ const Constructor = props => {
     const [flowName, setFlowName] = useState("");
 
     useEffect(() => {
-        
         loadPoses();
-        //console.log(dbPoses);
     }, []);
 
     const loadPoses = () => {
         API.pullPoses()
             .then(res => {
                 setDbPoses(res.data);
-                // console.log(dbPoses);
             }) 
             .catch(err => console.log(err))
     }
