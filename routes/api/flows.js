@@ -13,4 +13,9 @@ router
   .put(flowsController.update)
   .delete(flowsController.remove);
 
+  router
+  .route("/poses/:id")
+  .post(flowsController.populate)
+  .get(flowsController.playFlow)
+
 module.exports = router;
