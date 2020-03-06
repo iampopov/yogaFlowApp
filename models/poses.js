@@ -21,7 +21,6 @@ module.exports = function(sequelize, DataTypes) {
         },
         time: {
             type: DataTypes.INTEGER,
-            allowNull: false,
             validate: {
                 len: [1]
             }
