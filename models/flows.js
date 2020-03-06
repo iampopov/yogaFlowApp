@@ -43,7 +43,7 @@ module.exports = function (sequelize, DataTypes) {
                 isUrl: true
             }
         },
-        type: {
+        type: { 
             type: DataTypes.STRING,
             validate: {
                 len: [1]
