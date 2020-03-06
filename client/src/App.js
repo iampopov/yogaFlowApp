@@ -5,16 +5,23 @@ import Menu from "./Pages/Home/components/Menu";
 import Login from "./Pages/Login/components/Login.js"
 import Constructor from "./Pages/Home/components/Constructor";
 import Flows from "./Pages/Home/components/Flows";
+import Player from "./Pages/Home/components/Player"
 import Category from "./Pages/Home/components/Category"
+import FlowPreview from "./Pages/Home/components/FlowPreview";
+import SlideFlow from "./Pages/Home/components/SlideFlow"
 
 import logo from './logo.svg';
 import "./App.css";
+// import Slideflow from "./Pages/Home/components/SlideFlow";
+import PlaceHolder from "./Pages/Home/components/PlaceHolder";
+import PlayerButton from "./Pages/Home/components/PlayerButton";
+
+
 
 
 function App() {
   return (
     <div className="container">
-
 
       <Router>
         <Switch>
@@ -26,6 +33,9 @@ function App() {
           <Route exact path='/home'>
             <Header />
             <Menu />
+            <Category />
+            <Category />
+            <Category />
           </Route>
 
           <Route exact path='/constructor'>
@@ -40,9 +50,24 @@ function App() {
 
           <Route exact path='/categories'>
             <Category />
+            <Category />
           </Route>
+          <Route exact path='/player'>
+            <Player />
+          </Route>
+          <Route exact path='/flowpreview'>
+            <FlowPreview />
+          </Route>
+          <Route exact path='/phplayer'>
+            <SlideFlow />
 
-          <Route exact path='/login' component={Login} />
+            <PlaceHolder />
+          </Route>
+          <Route exact path='/login' component={Login} >
+          </Route>
+          <Route exact path='/Playerbutton'>
+            <PlayerButton />
+          </Route>
         </Switch>
       </Router>
     </div>

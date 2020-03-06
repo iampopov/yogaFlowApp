@@ -3,6 +3,10 @@ module.exports = function (sequelize, DataTypes) {
         flowPosition: {
             type: DataTypes.INTEGER,
             allowNull: false
+        },
+        poseTime:{
+            type:DataTypes.INTEGER,
+            allowNull:false
         }     
     });
 

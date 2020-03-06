@@ -10,19 +10,13 @@ module.exports = function (sequelize, DataTypes) {
         sound: {
             type: DataTypes.STRING,
             validate: {
-                len: [1]
+                isUrl: true
             }
         },
         rating: {
             type: DataTypes.DECIMAL,
             validate: {
                 max: 6
-            }
-        },
-        instructor: {
-            type: DataTypes.STRING,
-            validate: {
-                len: [1]
             }
         },
         difficulty: {
@@ -33,52 +27,43 @@ module.exports = function (sequelize, DataTypes) {
         },
         time: {
             type: DataTypes.INTEGER,
-            allowNull: false,
             validate: {
                 len: [1]
             }
         },
         description: {
             type: DataTypes.TEXT,
-            allowNull: false,
-            validate: {
-                len: [1]
-            }
-        },
-        sequence: {
-            type: DataTypes.STRING,
-            allowNull: false,
             validate: {
                 len: [1]
             }
         },
         cover: {
             type: DataTypes.STRING,
-            allowNull: false,
             validate: {
-                len: [1]
+                isUrl: true
             }
         },
-        type: {
+        type: { 
             type: DataTypes.STRING,
-            allowNull: false,
             validate: {
                 len: [1]
             }
         },
         healing: {
             type: DataTypes.STRING,
-            allowNull: false,
             validate: {
                 len: [1]
             }
+        },teacher_id:{
+            type: DataTypes.INTEGER,
+            allowNull:false
         }
     })
-   
-    
+
+
     Flows.associate = ((models) => {
         models.Flows.belongsToMany(models.Students, { through: "StudentFlow", foreignKey: 'flow_id', targetKey: 'id' });
-        models.Flows.belongsTo(models.Teachers)
+        models.Flows.belongsTo(models.Teachers, { foreignKey: "teacher_id",targetKey:'id' , constraints: true })
     });
 
     return Flows
