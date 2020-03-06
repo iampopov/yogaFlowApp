@@ -16,7 +16,7 @@
 
 .btn:hover{
     color: #123C69;
-    background-color: #5AAA95;
+    background-color: #9E768F;
 }
 
 .signUp{
@@ -56,6 +56,12 @@ h3{
 .btnSubmit{
     color: #123C69 ;
     background-color: #EDC7B7;
+    border: none;
+}
+
+.btnSubmit:hover{
+    background-color: #9E768F;
+    color: #123C69;
 }
 
 hr{
@@ -73,4 +79,10 @@ body {
     background-size: cover;
     background-position: center top;
 }
-  
+
+.form-check-label:before{
+    background-color:red;
+  }
+  .custom-checkbox .form-check-input:checked~.form-check-label::before{
+    background-color:black;
+  }
