@@ -34,13 +34,6 @@ module.exports = function (sequelize, DataTypes) {
                 is: ["^(?=.{8,}$)(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9]).*$"],
                 len: [1]
             }
-        },
-        followers: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                len: [1]
-            }
         }
     })
 
