@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Header from "./Pages/Home/components/Header";
 import Menu from "./Pages/Home/components/Menu";
 import Login from "./Pages/Login/components/Login.js"
-import Constructor from "./Pages/Home/components/Constructor";
+import Landing from "./Pages/Constructor/components/Landing";
 import Flows from "./Pages/Home/components/Flows";
 import Player from "./Pages/Home/components/Player"
 import Category from "./Pages/Home/components/Category"
@@ -40,7 +40,7 @@ function App() {
 
           <Route exact path='/constructor'>
             <Header />
-            <Constructor />
+            <Landing />
           </Route>
 
           <Route exact path='/flows'>
