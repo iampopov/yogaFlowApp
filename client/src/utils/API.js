@@ -31,6 +31,10 @@ export default {
 
     pullPoses: function () {
      return axios.get("/api/poses/")  
+    },
+
+    pullTeachers: function () {
+     return axios.get("/api/teachers/")  
     }
 };
 

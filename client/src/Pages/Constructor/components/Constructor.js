@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Jumbotron, Button, FormGroup, Label, Input, FormText, CardImg, ListGroupItem, Row } from 'reactstrap';
 import { List } from "../../Home/components/List";
-import API from '../../../utils/API';
+import API from "../../../utils/API";
 const shortid = require('shortid');
 
 const Constructor = props => {
     const [poses, setPoses] = useState([]);
     const [dbPoses, setDbPoses] = useState([]);
-    const [flowName, setFlowName] = useState("");
+    // const [flowName, setFlowName] = useState("");
 
     useEffect(() => {
         loadPoses();
@@ -21,9 +21,9 @@ const Constructor = props => {
             .catch(err => console.log(err))
     }
 
-    const handleFlowNameChange = (e) => {
-        setFlowName( e.target.value )
-    }
+    // const handleFlowNameChange = (e) => {
+    //     setFlowName( e.target.value )
+    // }
 
     const handleInputChange = event => {
         // grab id of the time you want to change
@@ -83,10 +83,10 @@ const Constructor = props => {
       return (
 <>
         <Jumbotron>
-            <FormGroup>
+            {/* <FormGroup>
                 <Label for="nameFlow">Name your flow:</Label>
                 <Input type="text" id="nameFlow" placeholder="flow name" onChange={handleFlowNameChange} value={flowName} />
-            </FormGroup>
+            </FormGroup> */}
             <List>
       <Row>{poses.length ? (<Button>Save</Button>) : (<h2>Select from the poses below:</h2>) }</Row>
             <div className="row">
