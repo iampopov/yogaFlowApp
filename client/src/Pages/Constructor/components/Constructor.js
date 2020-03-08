@@ -18,6 +18,7 @@ const Constructor = props => {
     const loadPoses = () => {
         API.pullPoses()
             .then(res => {
+                console.log("entro")
                 setDbPoses(res.data);
             }) 
             .catch(err => console.log(err))
