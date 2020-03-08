@@ -8,6 +8,7 @@ function Landing() {
     const [clicked, setClicked] = useState(false)
     const [showTeacher, setShowTeacher] = useState(false)
     const [flowName, setFlowName] = useState("");
+    const [youTube, setYouTube] = useState("");
     const [teacher, setTeacher] = useState(
         {"id": "",
         "teacher_name": "",
@@ -24,6 +25,10 @@ function Landing() {
     const handleFlowNameChange = (e) => {
         setFlowName( e.target.value )
     };
+
+    const handleYouTubeLink = (e) => {
+        setYouTube( e.target.value )
+    };
     
     useEffect(() => {
         loadTeachers();
@@ -36,7 +41,7 @@ function Landing() {
     };
 
     const handleTeacherSelection = (e) => {
-        console.log(e.target);
+        // console.log(e.target);
         setSelectedTeacher(e.target.id)
     };
 
@@ -52,7 +57,7 @@ function Landing() {
     }
     return (
         <>
-        {clicked ? ( <Constructor />) : (
+        {clicked ? ( <Constructor teacher_id={selectedTeacher} flow_name={flowName} youTube={youTube} onClick={handleRender} />) : (
         <>
         <FormGroup>
                 <Label for="nameFlow">Name your flow:</Label>
@@ -73,7 +78,11 @@ function Landing() {
         ) : ( 
             <h3>No Results to Display</h3>
         )}
-        <h1>Ready to do it? Let's </h1> <Button teacher_id={selectedTeacher} flow_name={flowName} onClick={handleRender}>create the flow</Button>
+        <h1>Ready to do it? Let's </h1> <Button onClick={handleRender}>create the flow</Button>
+        <h1>or upload your own:  </h1>
+        <Input type="text" id="youTubeFlow" placeholder="YouTube link" onChange={handleYouTubeLink} value={youTube} />
+        <Button onClick={handleRender}>I am going with YouTube!</Button>
+        
         </>
         )}
         

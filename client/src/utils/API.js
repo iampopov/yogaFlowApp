@@ -1,9 +1,6 @@
 import axios from "axios";
 
 export default {
-    // Gets all books
-
-
     uploadFile: async function (file) {
 
         axios({

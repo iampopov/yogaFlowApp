@@ -18,6 +18,7 @@ const Constructor = props => {
     const loadPoses = () => {
         API.pullPoses()
             .then(res => {
+
                 setDbPoses(res.data);
             }) 
             .catch(err => console.log(err))
@@ -119,6 +120,7 @@ const Constructor = props => {
             </div>
             </List>
             <List>
+            {props.youTube ? ("") : (
             <div className="row">
                 {dbPoses.map(pose => (
                     <div className="col-6" key={pose.id} onClick={handleAddPose}>
@@ -126,6 +128,7 @@ const Constructor = props => {
                     </div>
                 ))}
             </div>
+            )}
             </List>
             <FormGroup>
                 <Label for="coverImage">Cover</Label>
@@ -134,6 +137,7 @@ const Constructor = props => {
                 Please upload some Cover Page (Otherwise we will use the picture of the first pose as a cover)
                 </FormText>
             </FormGroup>
+            {props.youTube ? ("") : (
             <FormGroup>
                 <Label for="audioFile">Audio</Label>
                 <Input type="file" name="file" id="audioFile" />
@@ -141,6 +145,7 @@ const Constructor = props => {
                 Please upload an audio file for your flow.
                 </FormText>
             </FormGroup>
+            )}
 
         </Jumbotron>
 </>

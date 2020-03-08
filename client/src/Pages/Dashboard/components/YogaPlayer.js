@@ -1,26 +1,28 @@
 import ReactPlayer from "react-player"
 import React from "react"
 const YogaPlayer = (props) => {
-
+    const { handleBack, handlePlay, handleForward, height, playerProps, handlePause } = props
     return (
-    <div className="row">
-        <div className="col-12" id="playerDiv" style={{ height: props.height + "px" }}>
-            <ReactPlayer url='https://www.youtube.com/watch?v=v7AYKMP6rOE' playing={true} controls={false} volume={0.8} width={"100%"} height={"100%"} />
+        <div className="row">
+            <div className="col-12" id="playerDiv" style={{ height: height + "px" }}>
+                <ReactPlayer {...playerProps} width={"100%"} height={"100%"} />
+                {/* https://yogaflowapp.s3.us-east-2.amazonaws.com/oh-shit_2.mp3   https://www.youtube.com/watch?v=b1H3xO3x_Js*/}
 
 
-            <nav class="navbar navbar-dark bg-primary">
+                <nav className="navbar navbar-dark bg-primary justify-content-center bg-dark">
 
-                <a class="navbar-brand" href="#">Navbar w/ text</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-            </nav>
+                    <div className=" btn-group justify-content-center" role="group" aria-label="Basic example">
+                        <button type="button" onClick={handleBack} className="btn btn-secondary text-center"><i className="fas fa-backward"></i></button>
+                        <button type="button" onClick={!playerProps.playing ? handlePlay : handlePause} className="btn btn-secondary rounded-circle text-center">{!playerProps.playing ? <i className="fas fa-play"></i> : <i class="fas fa-pause"></i>}</button>
+                        <button type="button" onClick={handleForward} className="btn btn-secondary text-center"><i className="fas fa-forward"></i></button>
+                    </div>
+
+                </nav>
+            </div>
         </div>
-    </div>
 
     )
 }
-
 
 
 export default YogaPlayer;
