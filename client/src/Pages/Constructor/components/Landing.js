@@ -27,7 +27,7 @@ function Landing() {
     
     useEffect(() => {
         loadTeachers();
-    });
+    }, []);
 
     const loadTeachers = () => {
         API.pullTeachers()
@@ -36,7 +36,7 @@ function Landing() {
     };
 
     const handleTeacherSelection = (e) => {
-        console.log(e.target.id);
+        console.log(e.target);
         setSelectedTeacher(e.target.id)
     };
 
@@ -62,7 +62,7 @@ function Landing() {
         {teacher.length ? (
             <Dropdown isOpen={dropdownOpen} toggle={toggle}>
             <DropdownToggle caret onClick={handleClick}>
-            {selectedTeacher ? (selectedTeacher) : ("select yourself!")}
+            {selectedTeacher ? (teacher[selectedTeacher-1].teacher_name) : ("select yourself!")}
                 </DropdownToggle>
             <DropdownMenu onClick={handleTeacherSelection}>
                 {teacher.map(teacher => (
