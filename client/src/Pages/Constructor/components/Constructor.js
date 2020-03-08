@@ -5,12 +5,14 @@ import API from "../../../utils/API";
 const shortid = require('shortid');
 
 const Constructor = props => {
+
     const [poses, setPoses] = useState([]);
     const [dbPoses, setDbPoses] = useState([]);
     // const [flowName, setFlowName] = useState("");
 
     useEffect(() => {
         loadPoses();
+        console.log(props);
     }, []);
 
     const loadPoses = () => {
