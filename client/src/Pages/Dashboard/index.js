@@ -1,171 +1,79 @@
-// import React from "react";
+import React, { useState, useEffect} from "react";
+import YogaPlayer from "./components/YogaPlayer"
 
+const Dashboard = () => {
+    useEffect(()=>{
+        console.log("useEffect")
+        console.log(document.getElementById("playerDiv"))
+    setPlayerHeight(Math.ceil(document.getElementById("playerDiv").clientWidth*0.6466666))
+},[YogaPlayer])
 
-// const Dashboard = () => {
-//     console.log()
-//  return (<div className="btn-group btn-group-toggle" data-toggle="buttons">
-//  <label className="btn active" htmlFor="option1">Teacher
-//  <input type="radio" name="options" id="option1" />
-//  <input type="radio" name="options" id="option2" /></label>
-// </div>)
-// }
+    const [playerState, setPlayerState] = useState({
+        url: null,
+        pip: false,
+        playing: true,
+        controls: false,
+        light: false,
+        volume: 0.8,
+        muted: false,
+        played: 0,
+        loaded: 0,
+        duration: 0,
+        playbackRate: 1.0,
+        loop: false
+    });
+    const [playerHeight,setPlayerHeight] = useState()
+    const { url,
+        pip,
+        playing,
+        controls,
+        light,
+        volume,
+        muted,
+        played,
+        loaded,
+        duration,
+        playbackRate,
+        loop } = playerState
 
-// export default Dashboard;
-
-import React, {useRef, useState, useEffect} from 'react'
-import PropTypes from 'prop-types'
-import FontAwesomeIcon from '../Icon/Icon'
-import {cn} from '../../utils/classNames'
-import Overlay from '../Overlay/Overlay'
-import ToggleButton from '../ToggleButton/ToggleButton'
-import Selector from '../Selector/Selector'
-import Volume from '../Volume/Volume'
-import Progress from '../Progress/Progress'
-import TimeJump from '../TimeJump/TimeJump'
-
-import './Player.css'
-
-const Player = ({className, src}) => {
-  const playerRef = useRef(null)
-  const videoRef = useRef(null)
-  const [currentTime, setCurrentTime] = useState(0)
-  const [duration, setDuration] = useState(0)
-  const [, setSubtitle] = useState(null)
-
-  useEffect(() => {
-    const video = videoRef.current
-    if (!video) return
-
-    const updateDuration = () => {
-      setDuration(video.duration)
-    }
-    video.addEventListener('loadedmetadata', updateDuration)
-
-    return () => video.removeEventListener('loadedmetadata', updateDuration)
-  }, [setDuration])
-
-  useEffect(() => {
-    const video = videoRef.current
-    if (!video) return
-
-    const updateTime = () => {
-      setCurrentTime(video.currentTime)
-    }
-    video.addEventListener('timeupdate', updateTime)
-    return () => video.removeEventListener('timeupdate', updateTime)
-  }, [currentTime, setCurrentTime])
-
-  const options = [
-    {
-      label: 'Off',
-      value: 'off',
-    },
-    {
-      label: 'English',
-      value: 'en-us',
-    },
-    {
-      label: 'Spanish',
-      value: 'es-es',
-    },
-    {
-      label: 'Português',
-      value: 'pt-br',
-    },
-    {
-      label: 'Import...',
-      value: 'new',
-    },
-  ]
-
-  return (
-    <div className={cn('Rac', className)} ref={playerRef}>
-      <video className="Rac__video" ref={videoRef} src={src} />
-      <Overlay className="Rac__overlay">
-        <div className="Rac__playback">
-          <TimeJump.Backward
-            className="Rac__skip-time"
-            time={5}
-            onClick={time => (videoRef.current.currentTime += time)}
-          />
-          <ToggleButton
-            className="Rac__playback-button"
-            value={() => videoRef.current && !videoRef.current.paused}
-            onChange={active => {
-              if (!active) {
-                return videoRef.current.pause()
-              }
-
-              return videoRef.current.play()
-            }}
-          >
-            {active => {
-              if (!active) {
-                return <FontAwesomeIcon icon="play" />
-              }
-
-              return <FontAwesomeIcon icon="pause" />
-            }}
-          </ToggleButton>
-          <TimeJump.Forward
-            className="Rac__skip-time"
-            time={5}
-            onClick={time => (videoRef.current.currentTime += time)}
-          />
-        </div>
-        <div className="Rac__controls">
-          <Selector
-            className="Rac__subtitles-selector"
-            title="Subtitles"
-            options={options}
-            value="off"
-            onChange={value => setSubtitle(value)}
-          >
-            <FontAwesomeIcon icon="comment-alt" />
-          </Selector>
-          <Progress
-            className="Rac__progress-bar"
-            initial={0}
-            time={currentTime}
-            duration={duration}
-            onSkip={time => (videoRef.current.currentTime = time)}
-          />
-          <Volume
-            className="Rac__volume"
-            onChange={level => {
-              const volume = level / 100
-              videoRef.current.volume = volume
-              videoRef.current.muted = volume === 0
-            }}
-          />
-          <ToggleButton
-            className="Rac__screen-toggle"
-            initial={document.fullscreenElement}
-            onChange={active => {
-              if (!active) {
-                return document.exitFullscreen()
-              }
-
-              return playerRef.current.requestFullscreen({navigationUI: 'hide'})
-            }}
-          >
-            {active => {
-              if (!active) {
-                return <FontAwesomeIcon icon="expand" />
-              }
-
-              return <FontAwesomeIcon icon="compress" />
-            }}
-          </ToggleButton>
-        </div>
-      </Overlay>
-    </div>
-  )
+    document.addEventListener('resize', function(){
+        // setViewPortwidth(window.innerWidth)
+        // let playerHeight = document.getElementById("playerDiv").firstChild.offsetWidth;
+        setPlayerHeight(Math.ceil(document.getElementById("playerDiv").clientWidth*0.57))
+    });
+  
+    return (
+        <YogaPlayer height={playerHeight}/>
+        // <div className='player-wrapper'>
+        /* <ReactPlayer
+            // ref={this.ref}
+            className='react-player'
+            width='100%'
+            height='100%'
+            url={url}
+            pip={pip}
+            playing={playing}
+            controls={controls}
+            light={light}
+            loop={loop}
+            playbackRate={playbackRate}
+            volume={volume}
+            muted={muted}
+            onReady={() => console.log('onReady')}
+            onStart={() => console.log('onStart')}
+            onPlay={this.handlePlay}
+            onEnablePIP={this.handleEnablePIP}
+            onDisablePIP={this.handleDisablePIP}
+            onPause={this.handlePause}
+            onBuffer={() => console.log('onBuffer')}
+            onSeek={e => console.log('onSeek', e)}
+            onEnded={this.handleEnded}
+            onError={e => console.log('onError', e)}
+            onProgress={this.handleProgress}
+            onDuration={this.handleDuration}
+        />
+    </div> */
+    )
 }
 
-Player.propTypes = {
-  className: PropTypes.string,
-  src: PropTypes.string.isRequired,
-}
-
-export default Player
+export default Dashboard;
