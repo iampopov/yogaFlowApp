@@ -16,7 +16,7 @@ const YogaPlayer = (props) => {
                         <button type="button" onClick={!playerProps.playing ? handlePlay : handlePause} className="btn btn-secondary rounded-circle text-center">{!playerProps.playing ? <i className="fas fa-play"></i> : <i class="fas fa-pause"></i>}</button>
                         <button type="button" onClick={handleForward} className="btn btn-secondary text-center"><i className="fas fa-forward"></i></button>
                     </div>
-                    <div className="d-flex justify-content-end align-items-center">
+                    <div className="d-flex justify-content-end align-items-center w-50">
                         <input type="range" value={playerProps.volume} className="form-control-range align-bottom ml-1 mb-0" onChange={handleVolume} id="durationRange" 
                         min="0" max="1" step="0.01" />
                         </div>    
@@ -27,7 +27,7 @@ const YogaPlayer = (props) => {
                         </div>     
                     
 
-                </nav>
+                </nav> 
             </div>
         </div>
 
