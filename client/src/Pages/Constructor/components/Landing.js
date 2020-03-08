@@ -6,7 +6,7 @@ import API from "../../../utils/API"
 
 function Landing() {
     const [clicked, setClicked] = useState(false)
-    // const [land, setLand] = useState({ checked: false, landed: false })
+    const [showTeacher, setShowTeacher] = useState(false)
     const [flowName, setFlowName] = useState("");
     const [teacher, setTeacher] = useState(
         {"id": "",
@@ -41,21 +41,14 @@ function Landing() {
     };
 
     const handleRender = (e) => {
-        //console.log(e.target);
-        // console.log(clicked);
-        
-        // clicked = true;
-        // console.log(clicked);
+
         setClicked(!clicked)
-        // e.preventDefault()
-        // let temp = false;
-        // if (clicked) {
-        //     temp = clicked;
-        // }
-        // setLand({
-        //     checked: true,
-        //     landed: temp
-        // });
+
+    }
+    const handleClick = () => {
+
+        setShowTeacher(!showTeacher)
+
     }
     return (
         <>
@@ -68,8 +61,8 @@ function Landing() {
         <h1>Get the credit for this flow: </h1>
         {teacher.length ? (
             <Dropdown isOpen={dropdownOpen} toggle={toggle}>
-            <DropdownToggle caret>
-                Select yourself!
+            <DropdownToggle caret onClick={handleClick}>
+            {selectedTeacher ? (selectedTeacher) : ("select yourself!")}
                 </DropdownToggle>
             <DropdownMenu onClick={handleTeacherSelection}>
                 {teacher.map(teacher => (
