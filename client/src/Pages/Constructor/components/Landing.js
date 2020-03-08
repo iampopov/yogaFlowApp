@@ -62,7 +62,7 @@ function Landing() {
         {teacher.length ? (
             <Dropdown isOpen={dropdownOpen} toggle={toggle}>
             <DropdownToggle caret onClick={handleClick}>
-            {showTeacher ? (`ok`) : ("select yourself!")}
+            {selectedTeacher ? (selectedTeacher) : ("select yourself!")}
                 </DropdownToggle>
             <DropdownMenu onClick={handleTeacherSelection}>
                 {teacher.map(teacher => (
