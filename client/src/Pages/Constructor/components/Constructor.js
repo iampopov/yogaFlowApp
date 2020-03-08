@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Jumbotron, Button, FormGroup, Label, Input, FormText, CardImg, ListGroupItem, Row } from 'reactstrap';
 import { List } from "../../Home/components/List";
 import API from "../../../utils/API";
+import SaveFlowButton from "../../../Pages/Home/components/SaveFlowButton"
 const shortid = require('shortid');
 
 const Constructor = props => {
@@ -12,7 +13,7 @@ const Constructor = props => {
 
     useEffect(() => {
         loadPoses();
-        console.log(props);
+        //console.log(props);
     }, []);
 
     const loadPoses = () => {
@@ -91,7 +92,6 @@ const Constructor = props => {
                 <Input type="text" id="nameFlow" placeholder="flow name" onChange={handleFlowNameChange} value={flowName} />
             </FormGroup> */}
             <List>
-      <Row>{poses.length ? (<Button>Save</Button>) : (<h2>Select from the poses below:</h2>) }</Row>
             <div className="row">
                 {poses.map(pose => (
                     <div className="col-6" key={shortid.generate()} >
@@ -121,6 +121,8 @@ const Constructor = props => {
             </List>
             <List>
             {props.youTube ? ("") : (
+            <>
+            <Row>{poses.length ? (<SaveFlowButton teacher_id={props.teacher_id} flow_name={props.flow_name} ></SaveFlowButton>) : (<h2>Select from the poses below:</h2>) }</Row>
             <div className="row">
                 {dbPoses.map(pose => (
                     <div className="col-6" key={pose.id} onClick={handleAddPose}>
@@ -128,8 +130,10 @@ const Constructor = props => {
                     </div>
                 ))}
             </div>
+            </>
             )}
             </List>
+            <>
             <FormGroup>
                 <Label for="coverImage">Cover</Label>
                 <Input type="file" name="file" id="coverImage" onChange={ReactUploadFile}/>
@@ -137,6 +141,8 @@ const Constructor = props => {
                 Please upload some Cover Page (Otherwise we will use the picture of the first pose as a cover)
                 </FormText>
             </FormGroup>
+            {props.youTube ? (<SaveFlowButton />) : ("")}
+            </>
             {props.youTube ? ("") : (
             <FormGroup>
                 <Label for="audioFile">Audio</Label>
