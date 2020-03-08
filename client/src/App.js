@@ -8,7 +8,8 @@ import Flows from "./Pages/Home/components/Flows";
 import Player from "./Pages/Home/components/Player"
 import Category from "./Pages/Home/components/Category"
 import FlowPreview from "./Pages/Home/components/FlowPreview";
-import SlideFlow from "./Pages/Home/components/SlideFlow"
+import SlideFlow from "./Pages/Home/components/SlideFlow";
+import Dashboard from "./Pages/Dashboard/"
 
 import logo from './logo.svg';
 import "./App.css";
@@ -37,6 +38,13 @@ function App() {
             <Category />
             <Category />
           </Route>
+          
+          <Route exact path='/dashboard'>
+            <Header />
+            <Menu />
+            <Dashboard/>
+          </Route>
+
 
           <Route exact path='/constructor'>
             <Header />
