@@ -27,7 +27,7 @@ function Landing() {
     
     useEffect(() => {
         loadTeachers();
-    });
+    },[]);
 
     const loadTeachers = () => {
         API.pullTeachers()
