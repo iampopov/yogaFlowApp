@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import YogaPlayer from "./components/YogaPlayer"
+import "../../styles/YogaPlayer.css";
 
 const Dashboard = () => {
     useEffect(() => {
@@ -9,7 +10,7 @@ const Dashboard = () => {
     }, [YogaPlayer])
 
     const [playerState, setPlayerState] = useState({
-        url:'https://yogaflowapp.s3.us-east-2.amazonaws.com/oh-shit_2.mp3 ' ,
+        url:'https://www.youtube.com/watch?v=b1H3xO3x_Js' ,
         pip: false,
         playing: false,
         controls: false,
@@ -53,7 +54,10 @@ const Dashboard = () => {
         console.log('onPause')
         setPlayerState({ ...playerState,playing: false })
     }
-
+ const handleVolume = (e) =>{
+    console.log('volume')
+    setPlayerState({...playerState, volume:e.target.value})
+ }
 
     document.addEventListener('resize', function () {
         // setViewPortwidth(window.innerWidth)
@@ -62,7 +66,7 @@ const Dashboard = () => {
     });
 
     return (
-        <YogaPlayer height={playerHeight} playerProps={playerState} handlePause={handlePause} handlePlay={handlePlay} />
+        <YogaPlayer height={playerHeight} playerProps={playerState} handlePause={handlePause} handleVolume={handleVolume} handlePlay={handlePlay} />
         // <div className='player-wrapper'>
         /* <ReactPlayer
             // ref={this.ref}
