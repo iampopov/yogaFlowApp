@@ -1,9 +1,6 @@
 import axios from "axios";
 
 export default {
-    // Gets all books
-
-
     uploadFile: async function (file) {
 
         axios({
@@ -31,6 +28,15 @@ export default {
 
     pullPoses: function () {
      return axios.get("/api/poses/")  
+    },
+
+    pullTeachers: function () {
+     return axios.get("/api/teachers/")  
+    },
+
+    createNewFlow:async function(params) {
+        console.log(params);
+        return axios.post("/api/flows", params)
     }
 };
 

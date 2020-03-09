@@ -3,7 +3,8 @@ USE yogaflowapp;
 INSERT INTO Teachers
     (teacher_name, login, email, password, createdAt, updatedAt)
 VALUES
-    ("Ivan", "Ivan", "ivan@ivan.com", "Ivan1", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+    ("Ivan", "Ivan", "ivan@ivan.com", "Ivan1", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ("Juan", "Juan", "Juan@ivan.com", "Juan1", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
 
 
 INSERT INTO Poses

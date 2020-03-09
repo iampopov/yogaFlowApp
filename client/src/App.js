@@ -3,12 +3,13 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Header from "./Pages/Home/components/Header";
 import Menu from "./Pages/Home/components/Menu";
 import Login from "./Pages/Login/components/Login.js"
-import Constructor from "./Pages/Home/components/Constructor";
+import Landing from "./Pages/Constructor/components/Landing";
 import Flows from "./Pages/Home/components/Flows";
 import Player from "./Pages/Home/components/Player"
 import Category from "./Pages/Home/components/Category"
 import FlowPreview from "./Pages/Home/components/FlowPreview";
-import SlideFlow from "./Pages/Home/components/SlideFlow"
+import SlideFlow from "./Pages/Home/components/SlideFlow";
+import Dashboard from "./Pages/Dashboard/"
 
 import logo from './logo.svg';
 import "./App.css";
@@ -36,10 +37,17 @@ function App() {
             <Category />
 
           </Route>
+          
+          <Route exact path='/dashboard'>
+            <Header />
+            <Menu />
+            <Dashboard/>
+          </Route>
+
 
           <Route exact path='/constructor'>
             <Header />
-            <Constructor />
+            <Landing />
           </Route>
 
           <Route exact path='/flows'>
