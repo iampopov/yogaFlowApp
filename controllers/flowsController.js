@@ -58,15 +58,34 @@ module.exports = {
     })
 
   }, playFlow: function (req, res) {
-    db.FlowsPoses.findAll({where: {FlowId:req.params.id},order: [
-      ['flowPosition', 'ASC'],
-  ]})
-    .then(data=>{
-      res.json(data);
+    db.FlowsPoses.findAll({
+      where: {
+        FlowId: req.params.id
+      }, order: [
+        ['flowPosition', 'ASC']
+      ],
+      include: [{model:db.Poses}]
     })
-    .catch(err => {
-      console.log(err);
-      res.status(404).end()
-    })
+      .then(data => {
+        res.json(data);
+      })
+      .catch(err => {
+        console.log(err);
+        res.status(404).end()
+      })
+
+
+
+      // findAll({
+      //   where:{id:shopId}, 
+      //   include:[
+      //       { model:ShopAd, as:'ads', 
+      //         where:{ 
+      //               is_valid:1, 
+      //               is_vertify:1},   
+      //         required:false
+      //         }
+      //       ]
+      //    })
   }
 }
