@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Jumbotron, Button, FormGroup, Label, Input, FormText, CardImg, ListGroupItem, Row } from 'reactstrap';
 import { List } from "../../Home/components/List";
 import API from "../../../utils/API";
-import SaveFlowButton from "../../../Pages/Home/components/SaveFlowButton"
+import SaveFlowButton from "./SaveFlowButton"
 const shortid = require('shortid');
 
 const Constructor = props => {
