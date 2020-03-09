@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import YogaPlayer from "./components/YogaPlayer"
 import "../../styles/YogaPlayer.css";
+
 
 const Dashboard = () => {
     useEffect(() => {
@@ -9,8 +10,11 @@ const Dashboard = () => {
         setPlayerHeight(Math.ceil(document.getElementById("playerDiv").clientWidth * 0.6466666))
     }, [YogaPlayer])
 
+
+    const refff = useRef(null);
+
     const [playerState, setPlayerState] = useState({
-        url:'https://www.youtube.com/watch?v=b1H3xO3x_Js' ,
+        url: 'https://www.youtube.com/watch?v=b1H3xO3x_Js',
         pip: false,
         playing: false,
         controls: false,
@@ -21,7 +25,8 @@ const Dashboard = () => {
         loaded: 0,
         duration: 0,
         playbackRate: 1.0,
-        loop: true
+        loop: true,
+        seeking: false
     });
     const [playerHeight, setPlayerHeight] = useState()
     const { url,
@@ -37,9 +42,13 @@ const Dashboard = () => {
         playbackRate,
         loop } = playerState;
 
+    const handlePlayButton = () => {
+        setPlayerState({ ...playerState, playing: !playing })
+    }
+
     const handlePlay = () => {
         console.log('onPlay')
-        setPlayerState({ ...playerState,playing: true })
+        setPlayerState({ ...playerState, playing: true })
     }
 
     const handleBack = () => {
@@ -50,14 +59,31 @@ const Dashboard = () => {
 
     }
 
-    const handlePause = () =>{
-        console.log('onPause')
-        setPlayerState({ ...playerState,playing: false })
+    const handlePause = () => {
+        setPlayerState({ ...playerState, playing: false })
     }
- const handleVolume = (e) =>{
-    console.log('volume')
-    setPlayerState({...playerState, volume:e.target.value})
- }
+
+    const handleSeekMouseDown = e => {
+        setPlayerState({ ...playerState, seeking: true })
+    }
+
+    const handleSeekMouseUp = e => {
+        console.log(refff.current)
+        setPlayerState({ ...playerState, seeking: false })
+        refff.current.seekTo(parseFloat(e.target.value))
+    }
+
+    const handleDuration = (e) => {
+        console.log(played)
+        setPlayerState({ ...playerState, played: parseFloat(e.target.value) })
+    }
+
+
+    const handleVolume = (e) => {
+
+        setPlayerState({ ...playerState, volume: e.target.value })
+    }
+
 
     document.addEventListener('resize', function () {
         // setViewPortwidth(window.innerWidth)
@@ -66,7 +92,17 @@ const Dashboard = () => {
     });
 
     return (
-        <YogaPlayer height={playerHeight} playerProps={playerState} handlePause={handlePause} handleVolume={handleVolume} handlePlay={handlePlay} />
+        <YogaPlayer
+            handlePlay={handlePlay}
+            inref={refff}
+            handlePause={handlePause}
+            height={playerHeight} playerProps={playerState}
+            handleSeekMouseUp={handleSeekMouseUp}
+            handleDuration={handleDuration}
+            handleVolume={handleVolume}
+            handlePlayButton={handlePlayButton}
+            handleSeekMouseDown={handleSeekMouseDown}
+        />
         // <div className='player-wrapper'>
         /* <ReactPlayer
             // ref={this.ref}
@@ -84,7 +120,7 @@ const Dashboard = () => {
             muted={muted}
             onReady={() => console.log('onReady')}
             onStart={() => console.log('onStart')}
-            onPlay={this.handlePlay}
+            onPlay={this.handlePlayButton}
             onEnablePIP={this.handleEnablePIP}
             onDisablePIP={this.handleDisablePIP}
             onPause={this.handlePause}
