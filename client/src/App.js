@@ -34,8 +34,7 @@ function App() {
             <Header />
             <Menu />
             <Category />
-            <Category />
-            <Category />
+
           </Route>
 
           <Route exact path='/constructor'>

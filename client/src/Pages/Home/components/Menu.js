@@ -10,10 +10,17 @@ function Menu() {
             </button>
             <div className="dropdown-menu" aria-labelledby="dropdownMenu2">
                 <Link route = "">
-                <button className="dropdown-item" type="button">Favorites</button>
+                <button className="dropdown-item" type="button">Profile</button>
                 </Link>
+
+                <Link route = "">
                 <button className="dropdown-item" type="button">Categories</button>
+                </Link>
+
+                <Link routte = "">
                 <button className="dropdown-item" type="button">Create Flow</button>
+                </Link>
+
             </div>
         </div>
     )

@@ -63,10 +63,13 @@ const SignUpForm = () => {
 
             <hr></hr>
 
+        
             <h3>Favorites</h3>
             <p>Select your favorite yoga categories</p>
 
             <hr></hr>
+
+
 
             <div className="types">
                 <div className="form-group form-check">
