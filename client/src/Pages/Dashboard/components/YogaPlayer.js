@@ -27,6 +27,17 @@ const YogaPlayer = (props) => {
         // }
     }, [playerProps]);
 
+    const myTimer = () => {
+        var d = new Date();
+        var t = d.toLocaleTimeString();
+    }
+
+    
+    const loadPose = (pose)=>{
+        setRenderPose(pose);
+    }
+    // useEffect(()=>{},[])
+
 
     return (
         <div className="row">
@@ -43,7 +54,7 @@ const YogaPlayer = (props) => {
                                         alt="no worked" />
                                 </div>
                                 <div className="col-5">
-                                    <p>Name of Pose</p>
+                                    <p>Name of Pose: {renderPose.pose_name}</p>
                                     <p>Creator</p>
                                     <p>Timer Current Pose</p>
                                     <p>Timer Overall</p>

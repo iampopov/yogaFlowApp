@@ -13,16 +13,18 @@ module.exports = function (sequelize, DataTypes) {
     FlowsPoses.associate = function(models) {
         models.Poses.belongsToMany(models.Flows, {
             through:"FlowsPoses"
-        })
+        });
         models.Flows.belongsToMany(models.Poses, {
             through:"FlowsPoses"
-        })
+        });
+        models.FlowsPoses.belongsTo(models.Poses);
+        models.FlowsPoses.belongsTo(models.Flows);
     }
         
     
     return FlowsPoses
 }
-
+ 
 // module.exports = (sequelize, DataTypes) => {
 //     const ProductOrder = sequelize.define('ProductOrder', {
 //       id: {
