@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import API from "../../../utils/API";
+import {Link} from "react-router-dom";
 
 const SignUpForm = () => {
 
@@ -21,6 +22,7 @@ const SignUpForm = () => {
                     password: "",
                     login: ""
                 })
+                
             })
             .catch(err => {
                 console.log("err")
@@ -120,8 +122,10 @@ const SignUpForm = () => {
                 </div>
             </div>
 
-
+            {/* <Link to="/home">              */}
             <button type="submit" className="btnSubmit btn-lg btn-block" onClick={handleSubmit}>Sign Up</button>
+            {/* </Link> */}
+
         </form>
     </div>);
 }
