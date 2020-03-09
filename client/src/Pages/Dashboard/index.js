@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import YogaPlayer from "./components/YogaPlayer"
 import "../../styles/YogaPlayer.css";
+import { Link, useParams } from "react-router-dom";
 
-
-const Dashboard = () => {
+const Dashboard = (props) => {
+    const {id} = useParams();
+    console.log(id);
     useEffect(() => {
         console.log("useEffect")
         console.log(document.getElementById("playerDiv"))
@@ -12,6 +14,8 @@ const Dashboard = () => {
 
 
     const refff = useRef(null);
+
+                /* https://yogaflowapp.s3.us-east-2.amazonaws.com/oh-shit_2.mp3   https://www.youtube.com/watch?v=b1H3xO3x_Js*/
 
     const [playerState, setPlayerState] = useState({
         url: 'https://www.youtube.com/watch?v=b1H3xO3x_Js',
@@ -31,6 +35,7 @@ const Dashboard = () => {
     const [playerHeight, setPlayerHeight] = useState()
     const { url,
         pip,
+        seeking,
         playing,
         controls,
         light,
@@ -84,6 +89,12 @@ const Dashboard = () => {
         setPlayerState({ ...playerState, volume: e.target.value })
     }
 
+    const handleProgress = state => {
+        // We only want to update time slider if we are not currently seeking
+        if (!seeking) {
+            setPlayerState({...playerState,played:state.played })
+        }
+    }
 
     document.addEventListener('resize', function () {
         // setViewPortwidth(window.innerWidth)
@@ -102,6 +113,7 @@ const Dashboard = () => {
             handleVolume={handleVolume}
             handlePlayButton={handlePlayButton}
             handleSeekMouseDown={handleSeekMouseDown}
+            handleProgress={handleProgress}
         />
         // <div className='player-wrapper'>
         /* <ReactPlayer
