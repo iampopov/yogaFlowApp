@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import API from "../../../utils/API";
+import {Link} from "react-router-dom";
 
 const SignUpForm = () => {
 
@@ -21,6 +22,7 @@ const SignUpForm = () => {
                     password: "",
                     login: ""
                 })
+                
             })
             .catch(err => {
                 console.log("err")
@@ -62,11 +64,16 @@ const SignUpForm = () => {
             </div>
 
             <hr></hr>
-
+        
             <h3>Favorites</h3>
             <p>Select your favorite yoga categories</p>
 
             <hr></hr>
+
+            <div className="form-group form-check">
+                    <input type="checkbox" className="form-check-input" id="exampleCheck1"></input>
+                    <label className="form-check-label" for="exampleCheck1">Please check box if you are a yoga teacher</label>
+                </div>
 
             <div className="types">
                 <div className="form-group form-check">
@@ -115,8 +122,10 @@ const SignUpForm = () => {
                 </div>
             </div>
 
-
+            {/* <Link to="/home">              */}
             <button type="submit" className="btnSubmit btn-lg btn-block" onClick={handleSubmit}>Sign Up</button>
+            {/* </Link> */}
+
         </form>
     </div>);
 }

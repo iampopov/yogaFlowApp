@@ -33,45 +33,54 @@ function App() {
           </Route>
 
           <Route exact path='/home'>
-            <Header />
             <Menu />
-            <Category />
-            <Category />
+            <Header />
             <Category />
           </Route>
           
+
           <Route exact path="/dashboard/:id">
           <Header />
             <Menu />
             <Dashboard />
+
           </Route>
 
 
           <Route exact path='/constructor'>
+            <Menu />
             <Header />
             <Landing />
           </Route>
 
           <Route exact path='/flows'>
+            <Menu />
             <Header />
             <Flows />
           </Route>
 
           <Route exact path='/categories'>
+            <Menu />
             <Category />
             <Category />
           </Route>
+
           <Route exact path='/player'>
+            <Menu />
             <Player />
           </Route>
+
           <Route exact path='/flowpreview'>
+            <Menu />
             <FlowPreview />
           </Route>
-          <Route exact path='/phplayer'>
-            <SlideFlow />
 
+          <Route exact path='/phplayer'>
+            <Menu />
+            <SlideFlow />
             <PlaceHolder />
           </Route>
+          
           <Route exact path='/login' component={Login} >
           </Route>
           <Route exact path='/Playerbutton'>

@@ -1,4 +1,6 @@
 import React from "react";
+import {Link} from "react-router-dom"
+
 
 const SignInForm = () => {
     return (
@@ -18,7 +20,9 @@ const SignInForm = () => {
 
                 <hr></hr>
 
+                <Link to="/home" > 
                 <button type="button" className="btn btn-lg btn-block">Sign in</button>
+                </Link>
 
 
             </form>
