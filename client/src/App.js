@@ -16,6 +16,7 @@ import "./App.css";
 // import Slideflow from "./Pages/Home/components/SlideFlow";
 import PlaceHolder from "./Pages/Home/components/PlaceHolder";
 import PlayerButton from "./Pages/Home/components/PlayerButton";
+import YogaPlayer from "./Pages/Dashboard/components/YogaPlayer";
 
 
 
@@ -37,10 +38,12 @@ function App() {
             <Category />
           </Route>
           
-          <Route exact path='/dashboard'>
+
+          <Route exact path="/dashboard/:id">
+          <Header />
             <Menu />
-            <Header />
-            <Dashboard/>
+            <Dashboard />
+
           </Route>
 
 
