@@ -1,11 +1,32 @@
 import ReactPlayer from "react-player";
-import React from "react"
+import React, { useState, useEffect } from "react"
+import API from "../../../utils/API";
 const YogaPlayer = (props) => {
     const { handleBack, handlePlay, handleForward, handleProgress, height, playerProps, handlePlayButton, handlePause, handleVolume, handleDuration, handleSeekMouseDown, handleSeekMouseUp, inref } = props
     let width = "0%"
     if (playerProps.url.includes("youtube.com")) {
         width = "100%"
     }
+
+    const [renderPose, setRenderPose] = useState({})
+    useEffect(() => {
+        if (playerProps.poses.length > 0) {
+            API.findIndividualPose(playerProps.poses[0].PoseId).then(res => {
+                setRenderPose(res.data);
+            })
+        }
+        // var myVar = setInterval(myTimer, 1000);
+
+        // function myTimer() {
+        //     var d = new Date();
+        //     var t = d.toLocaleTimeString();
+        //     document.getElementById("demo").innerHTML = t;
+        // }
+        // function myStopFunction() {
+        //     clearInterval(myVar);
+        // }
+    }, [playerProps]);
+
 
     return (
         <div className="row">
@@ -18,8 +39,8 @@ const YogaPlayer = (props) => {
                             <div className="row">
                                 <div className="col">
                                     <img
-                                        src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fimages.shape.mdpcdn.com%2Fsites%2Fshape.com%2Ffiles%2Fstyles%2Fslide%2Fpublic%2F2._side-plank-420x420_0.jpg&f=1&nofb=1"
-                                        alt="" />
+                                        src={renderPose ? renderPose.picture : ""}
+                                        alt="no worked" />
                                 </div>
                                 <div className="col-5">
                                     <p>Name of Pose</p>

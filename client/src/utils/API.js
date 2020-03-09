@@ -21,22 +21,34 @@ export default {
         })
     },
 
-    createNewUser:async function (user) {
+    createNewUser: async function (user) {
         console.log(user)
         return axios.post("/api/students/", user);
     },
 
     pullPoses: function () {
-     return axios.get("/api/poses/")  
+        return axios.get("/api/poses/")
     },
 
     pullTeachers: function () {
-     return axios.get("/api/teachers/")  
+        return axios.get("/api/teachers/")
     },
 
-    createNewFlow:async function(params) {
+    createNewFlow: async function (params) {
         console.log(params);
         return axios.post("/api/flows", params)
+    },
+
+    findFlow: async function (id) {
+        return axios.get("/api/flows/" + id)
+    },
+
+    findFlowContent: async function(id) {
+        return axios.get("/api/flows/poses/" + id)
+    },
+
+    findIndividualPose: async function(id){
+        return axios.get("/api/poses/" + id);
     }
 };
 
