@@ -5,7 +5,7 @@ import API from "../../../utils/API";
 const SaveFlowButton = props => {
 
 const handleClick = () => {
-    //console.log(props);
+    console.log(props);
     API.createNewFlow(props)
         .then(res=>console.log(res))
         .catch(err=>console.log(err))

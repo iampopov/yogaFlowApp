@@ -9,7 +9,6 @@ const Constructor = props => {
 
     const [poses, setPoses] = useState([]);
     const [dbPoses, setDbPoses] = useState([]);
-    // const [flowName, setFlowName] = useState("");
 
     useEffect(() => {
         loadPoses();
@@ -24,10 +23,6 @@ const Constructor = props => {
             }) 
             .catch(err => console.log(err))
     }
-
-    // const handleFlowNameChange = (e) => {
-    //     setFlowName( e.target.value )
-    // }
 
     const handleInputChange = event => {
         // grab id of the time you want to change
@@ -87,10 +82,7 @@ const Constructor = props => {
       return (
 <>
         <Jumbotron>
-            {/* <FormGroup>
-                <Label for="nameFlow">Name your flow:</Label>
-                <Input type="text" id="nameFlow" placeholder="flow name" onChange={handleFlowNameChange} value={flowName} />
-            </FormGroup> */}
+
             <List>
             <div className="row">
                 {poses.map(pose => (
@@ -141,7 +133,7 @@ const Constructor = props => {
                 Please upload some Cover Page (Otherwise we will use the picture of the first pose as a cover)
                 </FormText>
             </FormGroup>
-            {props.youTube ? (<SaveFlowButton />) : ("")}
+            {props.youTube ? (<SaveFlowButton teacher_id={props.teacher_id} flow_name={props.flow_name} sound={props.youTube} ></SaveFlowButton>) : ("")}
             </>
             {props.youTube ? ("") : (
             <FormGroup>
