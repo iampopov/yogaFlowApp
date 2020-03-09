@@ -9,11 +9,18 @@ function Menu() {
                 Dropdown
             </button>
             <div className="dropdown-menu" aria-labelledby="dropdownMenu2">
-                <Link route = "">
-                <button className="dropdown-item" type="button">Favorites</button>
+                <Link to = "/player">
+                <button className="dropdown-item" type="button">Profile</button>
                 </Link>
+
+                <Link to = "/categories">
                 <button className="dropdown-item" type="button">Categories</button>
+                </Link>
+
+                <Link to = "/constructor">
                 <button className="dropdown-item" type="button">Create Flow</button>
+                </Link>
+
             </div>
         </div>
     )
