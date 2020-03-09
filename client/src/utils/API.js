@@ -33,10 +33,22 @@ export default {
     pullTeachers: function () {
      return axios.get("/api/teachers/")  
     },
-
+    pullFlows: function() {
+      return axios.get("/api/flows/")  
+    },
     createNewFlow:async function(params) {
-        console.log(params);
+        //console.log(params);
         return axios.post("/api/flows", params)
+    },
+    createNewFlowPose:async function(id, body) {
+       console.log(id);
+       
+        console.log(body);
+        //console.log(params[0].flowId);
+        return axios.post(`/api/flows/poses/${id}`, body)
+    },
+    getFlow: function() {
+        return axios.get("/api/flows")
     }
 };
 

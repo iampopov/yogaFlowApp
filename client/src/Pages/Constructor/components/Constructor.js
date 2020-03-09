@@ -2,14 +2,15 @@ import React, { useState, useEffect } from "react";
 import { Jumbotron, Button, FormGroup, Label, Input, FormText, CardImg, ListGroupItem, Row } from 'reactstrap';
 import { List } from "../../Home/components/List";
 import API from "../../../utils/API";
-import SaveFlowButton from "./SaveFlowButton"
+import SavePosesFlowButton from "./SavePosesFlowButton";
 const shortid = require('shortid');
 
 const Constructor = props => {
+//console.log(props);
 
     const [poses, setPoses] = useState([]);
     const [dbPoses, setDbPoses] = useState([]);
-
+    const [flows, setFlows] = useState([]);
     useEffect(() => {
         loadPoses();
         //console.log(props);
@@ -18,9 +19,22 @@ const Constructor = props => {
     const loadPoses = () => {
         API.pullPoses()
             .then(res => {
-
+                // console.log(`dbposes are ${res.data}`);
+                // console.log(res.data);
                 setDbPoses(res.data);
             }) 
+            .catch(err => console.log(err))
+        API.pullFlows()
+            // .then(async (res) => {
+            //     //console.log(res.data);
+            //     await setFlows(res.data)
+            //     //console.log(flows);
+                
+            // })
+            .then(flow => {
+                console.log(flow.data);
+                setFlows(flow.data)
+            })
             .catch(err => console.log(err))
     }
 
@@ -66,6 +80,7 @@ const Constructor = props => {
         pose = {...pose}
         pose.sequence = (poses.length+1)
         pose.uniqueId = shortid.generate()
+        pose.flowId = props.flow_name.uniqueId
         setPoses([...poses, pose])
     }}
 
@@ -112,9 +127,10 @@ const Constructor = props => {
             </div>
             </List>
             <List>
-            {props.youTube ? ("") : (
+            {/* { flows.length && flows[0].sound === "https://yogaflowapp.s3.us-east-2.amazonaws.com/oh-shit_2.mp3" ? ("") : ( */}
+            { props.youTube ? ("") : (
             <>
-            <Row>{poses.length ? (<SaveFlowButton teacher_id={props.teacher_id} flow_name={props.flow_name} ></SaveFlowButton>) : (<h2>Select from the poses below:</h2>) }</Row>
+            <Row>{poses.length ? (<SavePosesFlowButton flowID={props.flow_name.uniqueId} teacher_id={props.teacher_id} flow_name={props.flow_name.name} flowPosition={poses.map(pose => pose)}></SavePosesFlowButton>) : (<h2>Select from the poses below:</h2>) }</Row>
             <div className="row">
                 {dbPoses.map(pose => (
                     <div className="col-6" key={pose.id} onClick={handleAddPose}>
@@ -133,7 +149,7 @@ const Constructor = props => {
                 Please upload some Cover Page (Otherwise we will use the picture of the first pose as a cover)
                 </FormText>
             </FormGroup>
-            {props.youTube ? (<SaveFlowButton teacher_id={props.teacher_id} flow_name={props.flow_name} sound={props.youTube} ></SaveFlowButton>) : ("")}
+            {props.youTube ? (<SavePosesFlowButton teacher_id={props.teacher_id} flow_name={props.flow_name} sound={props.youTube} ></SavePosesFlowButton>) : ("")}
             </>
             {props.youTube ? ("") : (
             <FormGroup>

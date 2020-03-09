@@ -54,9 +54,13 @@ module.exports = function (sequelize, DataTypes) {
             validate: {
                 len: [1]
             }
-        },teacher_id:{
+        },
+        teacher_id:{
             type: DataTypes.INTEGER,
             allowNull:false
+        },
+        flowID: {
+            type: DataTypes.STRING
         }
     })
 
