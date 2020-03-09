@@ -32,47 +32,48 @@ function App() {
           </Route>
 
           <Route exact path='/home'>
-            <Header />
             <Menu />
+            <Header />
             <Category />
-
           </Route>
           
           <Route exact path='/dashboard'>
-            <Header />
             <Menu />
+            <Header />
             <Dashboard/>
           </Route>
 
 
           <Route exact path='/constructor'>
+            <Menu />
             <Header />
             <Landing />
-            <Menu />
           </Route>
 
           <Route exact path='/flows'>
+            <Menu />
             <Header />
             <Flows />
-            <Menu />
           </Route>
 
           <Route exact path='/categories'>
-            <Category />
-            <Category />
             <Menu />
+            <Category />
+            <Category />
           </Route>
 
           <Route exact path='/player'>
-            <Player />
             <Menu />
+            <Player />
           </Route>
 
           <Route exact path='/flowpreview'>
+            <Menu />
             <FlowPreview />
           </Route>
 
           <Route exact path='/phplayer'>
+            <Menu />
             <SlideFlow />
             <PlaceHolder />
           </Route>
