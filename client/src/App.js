@@ -48,28 +48,35 @@ function App() {
           <Route exact path='/constructor'>
             <Header />
             <Landing />
+            <Menu />
           </Route>
 
           <Route exact path='/flows'>
             <Header />
             <Flows />
+            <Menu />
           </Route>
 
           <Route exact path='/categories'>
             <Category />
             <Category />
+            <Menu />
           </Route>
+
           <Route exact path='/player'>
             <Player />
+            <Menu />
           </Route>
+
           <Route exact path='/flowpreview'>
             <FlowPreview />
           </Route>
+
           <Route exact path='/phplayer'>
             <SlideFlow />
-
             <PlaceHolder />
           </Route>
+          
           <Route exact path='/login' component={Login} >
           </Route>
           <Route exact path='/Playerbutton'>
