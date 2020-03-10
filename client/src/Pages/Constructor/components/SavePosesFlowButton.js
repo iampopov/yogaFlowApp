@@ -8,17 +8,18 @@ const [clicked, setClicked] = useState(false)
 
 
 const handleClick = () => {
-    console.log(props);
-    console.log(props.flowPosition);
-    API.createNewFlowPose(props.flowID, props.flowPosition)
+    //console.log(props.flowPosition);
+    const bulkRows = props.flowPosition.map(obj => {
+        const { id, poseTime, flowPosition, flowId } = obj;
+        return { PoseId: id, poseTime, flowPosition, FlowId: flowId.id }; 
+    });
+    console.log(bulkRows);
+    API.createNewFlowPose(bulkRows)
         .then(res => {
             console.log(res);
             setClicked(true)            
              })
         .catch(err => console.log(err));
-
-    
-    
     
 }
       return (

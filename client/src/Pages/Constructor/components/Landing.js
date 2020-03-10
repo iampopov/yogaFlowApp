@@ -53,6 +53,8 @@ function Landing() {
         setSelectedTeacher(e.target.id)
     };
 
+    let flows = {};
+
     const handleRender = (e) => {
         
         API.createNewFlow({
@@ -63,7 +65,8 @@ function Landing() {
             
         })
         .then(res => {
-        console.log(res)
+        flows = res.data
+        //console.log(flows.id)
         setClicked(true)            
         })
         .catch(err=>console.log(err));
@@ -78,7 +81,7 @@ function Landing() {
     }
     return (
         <>
-        {clicked ? ( <Constructor teacher_id={selectedTeacher} flow_name={flowName} youTube={youTube} onClick={handleRender} />) : (
+        {clicked ? ( <Constructor teacher_id={selectedTeacher} flow_name={flowName} youTube={youTube} flowID={flows.id}  />) : (
         <>
         <FormGroup>
                 <Label for="nameFlow">Name your flow:</Label>
