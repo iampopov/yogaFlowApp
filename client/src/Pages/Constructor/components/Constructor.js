@@ -2,20 +2,18 @@ import React, { useState, useEffect } from "react";
 import { Jumbotron, Button, FormGroup, Label, Input, FormText, CardImg, ListGroupItem, Row } from 'reactstrap';
 import { List } from "../../Home/components/List";
 import API from "../../../utils/API";
-import SaveFlowButton from "./SaveFlowButton"
+import SavePosesFlowButton from "./SavePosesFlowButton";
 const shortid = require('shortid');
 
 const Constructor = props => {
+//console.log(props);
 
     const [poses, setPoses] = useState([]);
     const [dbPoses, setDbPoses] = useState([]);
-
-    useEffect(() => {
-        loadPoses();
-        //console.log(props);
-    }, []);
+    const [flows, setFlows] = useState([]);
 
     const loadPoses = () => {
+        
         API.pullPoses()
             .then(res => {
 
@@ -23,6 +21,22 @@ const Constructor = props => {
             }) 
             .catch(err => console.log(err))
     }
+
+    const loadFlows = () => {
+
+        API.pullFlows()
+        .then(res => {
+            setFlows(res.data)
+            console.log(res.data);
+        })
+        .catch(err => console.log(err))
+    }
+
+    useEffect(() => {
+        loadFlows();
+        loadPoses();
+        console.log(flows);
+    }, []);
 
     const handleInputChange = event => {
         // grab id of the time you want to change
@@ -33,7 +47,7 @@ const Constructor = props => {
 
         // set the seconds on the particular object inside that copied array
         
-        newPoses[trgt].duration=event.target.value
+        newPoses[trgt].poseTime=event.target.value
 
         // store updated array in state
         setTimeout(() => {
@@ -58,14 +72,33 @@ const Constructor = props => {
         
       }
 
+
+      
+
+      const findId = () => {
+        let id;
+          for (const flow of flows) {
+              if (flow.flowID === props.flow_name.uniqueId) {
+                  id = flow.flowID;
+                  return;
+              } 
+          }
+      }
+
     const handleAddPose = (e) => {
     e.preventDefault();
     
     if(e.target.id) {
         let pose = dbPoses[e.target.id-1];
         pose = {...pose}
-        pose.sequence = (poses.length+1)
+        pose.flowPosition = (poses.length+1)
         pose.uniqueId = shortid.generate()
+        //pose.flowID = findId()
+        pose.flowId = flows.find(x => {
+            console.log(x.flowID)
+            console.log(props.flow_name.uniqueId);
+            return x.flowID === props.flow_name.uniqueId
+         })
         setPoses([...poses, pose])
     }}
 
@@ -93,7 +126,7 @@ const Constructor = props => {
                             <CardImg height="42" width="42" src={pose.picture} alt={pose.pose_name} id={shortid.generate()}/>
                             </div>
                             <div className="col-6">
-                            <Input type="text" placeholder="seconds" key={pose.sequence} id={pose.uniqueId} onChange={handleInputChange} value={pose.duration}/>
+                            <Input type="text" placeholder="seconds" key={pose.sequence} id={pose.uniqueId} onChange={handleInputChange} value={pose.poseTime}/>
                     </div>
                         </Row>
                         <Row>
@@ -112,9 +145,11 @@ const Constructor = props => {
             </div>
             </List>
             <List>
-            {props.youTube ? ("") : (
+            {/* { flows.length && flows[0].sound === "https://yogaflowapp.s3.us-east-2.amazonaws.com/oh-shit_2.mp3" ? ("") : ( */}
+            {/* FlowId={props.flow_name.uniqueId} */}
+            { props.youTube ? ("") : (
             <>
-            <Row>{poses.length ? (<SaveFlowButton teacher_id={props.teacher_id} flow_name={props.flow_name} ></SaveFlowButton>) : (<h2>Select from the poses below:</h2>) }</Row>
+            <Row>{poses.length ? (<SavePosesFlowButton FlowId={props.flow_name.uniqueId} teacher_id={props.teacher_id} flow_name={props.flow_name.name} flowPosition={poses.map(pose => pose)}></SavePosesFlowButton>) : (<h2>Select from the poses below:</h2>) }</Row>
             <div className="row">
                 {dbPoses.map(pose => (
                     <div className="col-6" key={pose.id} onClick={handleAddPose}>
@@ -133,7 +168,7 @@ const Constructor = props => {
                 Please upload some Cover Page (Otherwise we will use the picture of the first pose as a cover)
                 </FormText>
             </FormGroup>
-            {props.youTube ? (<SaveFlowButton teacher_id={props.teacher_id} flow_name={props.flow_name} sound={props.youTube} ></SaveFlowButton>) : ("")}
+            {props.youTube ? (<SavePosesFlowButton teacher_id={props.teacher_id} flow_name={props.flow_name} sound={props.youTube} ></SavePosesFlowButton>) : ("")}
             </>
             {props.youTube ? ("") : (
             <FormGroup>

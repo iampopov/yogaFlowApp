@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Jumbotron, Button, FormGroup, Label, Input, FormText, CardImg, ListGroupItem, Row } from 'reactstrap';
+import { Alert, Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Jumbotron, Button, FormGroup, Label, Input, FormText, CardImg, ListGroupItem, Row } from 'reactstrap';
 // import "../../../styles/"
+import SaveFlowButton from "./SaveFlowButton";
 import Constructor from "./Constructor";
-import API from "../../../utils/API"
+import API from "../../../utils/API";
+const shortid = require('shortid');
 
 function Landing() {
     const [clicked, setClicked] = useState(false)
     const [showTeacher, setShowTeacher] = useState(false)
-    const [flowName, setFlowName] = useState("");
+    const [flowName, setFlowName] = useState({
+        name: "",
+        uniqueId: ""
+    });
     const [youTube, setYouTube] = useState("");
     const [teacher, setTeacher] = useState(
         {"id": "",
@@ -23,7 +28,10 @@ function Landing() {
     const toggle = () => setDropdownOpen(prevState => !prevState);
 
     const handleFlowNameChange = (e) => {
-        setFlowName( e.target.value )
+        setFlowName({
+            name: e.target.value,
+            uniqueId: shortid.generate() 
+        })
     };
 
     const handleYouTubeLink = (e) => {
@@ -45,9 +53,25 @@ function Landing() {
         setSelectedTeacher(e.target.id)
     };
 
-    const handleRender = (e) => {
+    let flows = {};
 
-        setClicked(!clicked)
+    const handleRender = (e) => {
+        
+        API.createNewFlow({
+            teacher_id: selectedTeacher,
+            flow_name: flowName.name,
+            sound: youTube || "https://yogaflowapp.s3.us-east-2.amazonaws.com/oh-shit_2.mp3",
+            flowID: flowName.uniqueId
+            
+        })
+        .then(res => {
+        flows = res.data
+        //console.log(flows.id)
+        setClicked(true)            
+        })
+        .catch(err=>console.log(err));
+
+        setClicked(!clicked);
 
     }
     const handleClick = () => {
@@ -57,11 +81,11 @@ function Landing() {
     }
     return (
         <>
-        {clicked ? ( <Constructor teacher_id={selectedTeacher} flow_name={flowName} youTube={youTube} onClick={handleRender} />) : (
+        {clicked ? ( <Constructor teacher_id={selectedTeacher} flow_name={flowName} youTube={youTube} flowID={flows.id}  />) : (
         <>
         <FormGroup>
                 <Label for="nameFlow">Name your flow:</Label>
-                <Input type="text" id="nameFlow" placeholder="flow name" onChange={handleFlowNameChange} value={flowName} />
+                <Input type="text" id="nameFlow" placeholder="flow name" onChange={handleFlowNameChange} value={flowName.name} />
         </FormGroup>
         <h1>Get the credit for this flow: </h1>
         {teacher.length ? (
@@ -78,10 +102,8 @@ function Landing() {
         ) : ( 
             <h3>No Results to Display</h3>
         )}
-        <h1>Ready to do it? Let's </h1> <Button onClick={handleRender}>create the flow</Button>
-        <h1>or upload your own:  </h1>
-        <Input type="text" id="youTubeFlow" placeholder="YouTube link" onChange={handleYouTubeLink} value={youTube} />
-        <Button onClick={handleRender}>I am going with YouTube!</Button>
+        <Input type="text" id="youTubeFlow" placeholder="YouTube - pose constructor will be disabled" onChange={handleYouTubeLink} value={youTube} />
+        <Button onClick={handleRender} flowID={flowName.uniqueId} teacher_id={selectedTeacher} flow_name={flowName.name}  sound={youTube ? (youTube) : ("https://yogaflowapp.s3.us-east-2.amazonaws.com/oh-shit_2.mp3") } >Save</Button>
         
         </>
         )}

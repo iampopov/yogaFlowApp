@@ -9,7 +9,7 @@ module.exports = {
   findById: function (req, res) {
     db.Flows.findOne({
       where: {
-        id: req.params.id
+        flowID: req.params.id
       }
     }).then(function (p) {
       res.json(p)
@@ -24,7 +24,7 @@ module.exports = {
   update: function (req, res, next) {
     db.Flows.update(req.body, {
       where: {
-        id: req.params.id
+        flowID: req.params.id
       }
     }).then(function (p) {
       res.json(p)
@@ -33,7 +33,7 @@ module.exports = {
   remove: function (req, res) {
     db.Flows.destroy({
       where: {
-        id: req.params.id
+        flowID: req.params.id
       }
     }).then(function (p) {
       res.json(p)
